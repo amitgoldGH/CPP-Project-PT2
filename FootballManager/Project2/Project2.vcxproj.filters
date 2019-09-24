@@ -47,16 +47,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\person.cpp">
+    <ClCompile Include="team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\player.cpp">
+    <ClCompile Include="tempMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\tempMain.cpp">
+    <ClCompile Include="person.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\team.cpp">
+    <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

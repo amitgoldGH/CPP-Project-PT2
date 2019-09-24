@@ -118,12 +118,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\person.cpp" />
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\player.cpp" />
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\team.cpp" />
-    <ClCompile Include="..\..\..\..\Other people%27s part 2\Ricky_Danipog_and_Yuval_Bar_Nahor -FootballManager\Project\Project2\tempMain.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="fixture.h" />
     <ClInclude Include="match.h" />
     <ClInclude Include="person.h" />
@@ -134,6 +128,12 @@
     <ClInclude Include="league.h" />
     <ClInclude Include="coach_player.h" />
     <ClInclude Include="team.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="person.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="team.cpp" />
+    <ClCompile Include="tempMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
