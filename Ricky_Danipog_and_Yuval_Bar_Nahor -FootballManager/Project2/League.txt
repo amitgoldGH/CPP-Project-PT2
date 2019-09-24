@@ -1,0 +1,93 @@
+PremierLeague
+6
+Team#A
+7
+Aoao 18 Israel 99 88 77 0 20000 1
+Aobo 19 Israel 99 88 77 0 20001 2
+Aoco 21 Israel 99 88 77 0 20002 3
+Aodo 22 Israel 99 88 77 0 20003 0
+Aoeo 23 Israel 99 88 77 0 20004 1
+Aofo 24 Israel 99 88 77 0 20005 2
+Aogo 118 Israel 99 88 77 0 20006 0
+2
+Aoho 40 Israel  1
+Aoio 45 Israel 3
+ManagerA 61 Israel 4
+
+Team#B
+8
+Boao 18 Israel 99 88 77 0 20000 1
+Bobo 19 Israel 99 88 77 0 20001 2
+Boco 21 Israel 99 88 77 0 20002 3
+Bodo 22 Israel 99 88 77 0 20003 0
+Boeo 23 Israel 99 88 77 0 20004 1
+Bofo 24 Israel 99 88 77 0 20005 2
+Bogo 118 Israel 99 88 77 0 20006 0
+Bozo 118 Israel 99 88 77 0 20006 2
+2
+Boho 40 Israel  1
+Boio 45 Israel 3
+ManagerB 61 Israel 4
+
+Team#C
+7
+Coao 18 Israel 99 88 77 0 20000 1
+Cobo 19 Israel 99 88 77 0 20001 2
+Coco 21 Israel 99 88 77 0 20002 3
+Codo 22 Israel 99 88 77 0 20003 0
+Coeo 23 Israel 99 88 77 0 20004 1
+Cofo 24 Israel 99 88 77 0 20005 2
+Cogo 118 Israel 99 88 77 0 20006 0
+2
+Coho 40 Israel  1
+Coio 45 Israel 3
+ManagerC 61 Israel 4
+
+Team#D
+7
+Doao 18 Israel 99 88 77 0 20000 1
+Dobo 19 Israel 99 88 77 0 20001 2
+Doco 21 Israel 99 88 77 0 20002 3
+Dodo 22 Israel 99 88 77 0 20003 0
+Doeo 23 Israel 99 88 77 0 20004 1
+Dofo 24 Israel 99 88 77 0 20005 2
+Dogo 118 Israel 99 88 77 0 20006 0
+2
+Doho 40 Israel  1
+Doio 45 Israel 3
+ManagerD 61 Israel 4
+
+Team#E
+9
+Eoao 18 Israel 99 88 77 0 20000 1
+Eobo 19 Israel 99 88 77 0 20001 2
+Eoco 21 Israel 99 88 77 0 20002 3
+Eodo 22 Israel 99 88 77 0 20003 0
+Eoeo 23 Israel 99 88 77 0 20004 1
+Eofo 24 Israel 99 88 77 0 20005 2
+Eogo 118 Israel 99 88 77 0 20006 0
+Eozo 24 Israel 99 88 77 0 20005 1
+Eoxo 118 Israel 99 88 77 0 20006 3
+2
+Eoho 40 Israel  1
+Eoio 45 Israel 3
+ManagerE 61 Israel 4
+
+Team#F
+7
+Foao 18 Israel 99 88 77 0 20000 1
+Fobo 19 Israel 99 88 77 0 20001 2
+Foco 21 Israel 99 88 77 0 20002 3
+Fodo 22 Israel 99 88 77 0 20003 0
+Foeo 23 Israel 99 88 77 0 20004 1
+Fofo 24 Israel 99 88 77 0 20005 2
+Fogo 118 Israel 99 88 77 0 20006 0
+4
+Foho 40 Israel  1
+Foio 45 Israel 3
+Foho 42 Israel  0
+Foio 41 Israel 2
+ManagerF 61 Israel 4
+2
+RefYuval 26 Israel 99
+RefRicky 27 Israel 99
