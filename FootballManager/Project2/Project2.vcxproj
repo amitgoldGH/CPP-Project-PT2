@@ -130,8 +130,12 @@
     <ClInclude Include="team.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Coach.cpp" />
+    <ClCompile Include="Coach_Player.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="referee.cpp" />
     <ClCompile Include="team.cpp" />
     <ClCompile Include="tempMain.cpp" />
   </ItemGroup>

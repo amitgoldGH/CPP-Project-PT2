@@ -1,6 +1,8 @@
 #ifndef __REFEREE_H
 #define __REFEREE_H
 
+#include "person.h"
+
 class Referee : public Person
 {
 private:

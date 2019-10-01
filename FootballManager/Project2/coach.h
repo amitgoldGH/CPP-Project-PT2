@@ -15,7 +15,7 @@ public:
 		Team* currentTeam = nullptr);
 	~Coach();
 	void show() const;
-	void setTeam(Team * team);
+	void setTeam(Team* team);
 	
 
 protected:

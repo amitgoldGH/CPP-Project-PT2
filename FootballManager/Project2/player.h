@@ -8,7 +8,7 @@ class Player : virtual public Person
 
 public:
 	
-	virtual void show() const; // Changed to virtual for inheritors to override.
+	void show() const; // Changed to virtual for inheritors to override.
 	double getRate() const; // Changed to const function -Amit
 
 	Player(const char* name, int age,

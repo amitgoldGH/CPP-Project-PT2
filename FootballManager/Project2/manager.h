@@ -1,6 +1,6 @@
 #ifndef __MANAGER_H
 #define __MANAGER_H
-#include "Person.h"
+#include "person.h"
 #include "team.h"
 
 class Team;
@@ -12,10 +12,10 @@ private:
 	int yearsOfExperience;
 	Team * currentTeam;
 	Manager(const Manager& other) = default;
+	~Manager();
 
 public:
 	Manager(const char *name, int age, const char* nationality,int yearsOfExperience);
 	void setTeam(Team * team);
-	~Manager();
 };
 #endif //__MANAGER_H

@@ -10,9 +10,10 @@ protected:
 	int age;
 	char nationality[NAME_SIZE];
 	Person(const Person& other);
+	virtual ~Person();	//added virtual d'tor (polymorphism) - asaf
 public:
 	Person(const char* name, int age, const char* nationality);
-	virtual void show() const; // Set as virtual, so inheritors can override -Amit
+	virtual void show() const =0; // Set as virtual, so inheritors can override -Amit == changed to abstract - asaf
 
 };
 
