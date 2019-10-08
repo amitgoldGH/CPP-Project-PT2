@@ -30,6 +30,7 @@ public:
 	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more pointprivate:
 	const char* getName() const; // Added method for Player to display team name, as team name is private -Amit
 
+	void show() const;
 private:
 	char name[NAME_SIZE];
 	Manager * manager;
@@ -41,5 +42,7 @@ private:
 	int players_On_Bench; // Added to have phys size of array -Amit
 	int points;
 };
+
+#include "player.h" // for forward declaration of player class.
 
 #endif // !__TEAM_H
