@@ -12,3 +12,7 @@ void Referee::show() const
 	Person::show();
 	std::cout << "Played " << gamesPlayed << " Games\nRating: " << rating << std::endl;
 }
+
+Referee::~Referee()
+{
+}

@@ -12,6 +12,7 @@ private:
 public:
 	Referee(const char * name, int age, const char* nationality,int rating = 0);
 	void show() const;
+	~Referee();
 
 };
 
