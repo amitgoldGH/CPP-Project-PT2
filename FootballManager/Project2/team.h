@@ -7,20 +7,19 @@ class Coach;
 class Player;
 class Manager;
 
-const int LINEUP_SIZE = 5;// size of the team lineup 
-static const char* Roles[15] = { "Striker", "Defender", "Goal-Keeper", "Middle-Fielder" };
+const int LINEUP_MAX_SIZE = 5;// size of the team lineup 
+const int BENCH_SIZE_MULTI = 3; // Multiplier for bench size.
 // Added array for each role for toString purposes -Amit
 
 class Team 
 {
 
 public:
-	enum Role { striker, defender, goalkeeper, midlefielder };
 	Team(const char name[NAME_SIZE],
-		Manager * manager = nullptr,
-		Coach * coaches = nullptr,
-		Player * lineup = nullptr,
-		Player * benchPlayers = nullptr,
+		Manager* manager = nullptr,
+		Coach* coaches = nullptr,
+		Player** lineup = nullptr,
+		Player** benchPlayers = nullptr, int lineup_Size = 0, int bench_Size = 0,
 		int points=0);
 	~Team();
 
@@ -35,9 +34,11 @@ private:
 	char name[NAME_SIZE];
 	Manager * manager;
 	Coach * coaches;
-	Player** benchPlayers; // Changed to Pointer array from single pointer
-	Player** lineup; // Changed to Pointer array from single pointer,
+	Player** benchPlayers; // Changed to Pointer array from single pointer, needs dynamic allocation
+	Player** lineup; // Changed to Pointer array from single pointer,  needs dynamic allocation
 					 //to allow multiple player pointers in the array
+	int players_In_Lineup; // Added to have phys size of array -Amit
+	int players_On_Bench; // Added to have phys size of array -Amit
 	int points;
 };
 
