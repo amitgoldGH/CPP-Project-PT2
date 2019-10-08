@@ -3,6 +3,8 @@
 #include "team.h"
 #include "referee.h"
 
+#define MAX_GOALS_IN_MATCH 7
+
 class Match
 {
 
@@ -14,7 +16,7 @@ private:
 	Match(const Match& other) = default;
 
 public:
-	Match(Team * homeTeam, Team * awayTeam, Referee * referee);//Inside the constructor need to play Match random score and assign also randommly assign goal to player and score to winning team. 
+	Match(Team* homeTeam, Team* awayTeam, Referee* referee);//Inside the constructor need to play Match random score and assign also randommly assign goal to player and score to winning team. 
 	void playMatch();
 	~Match();
 	void show() const;
