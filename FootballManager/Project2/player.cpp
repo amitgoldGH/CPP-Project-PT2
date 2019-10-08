@@ -56,3 +56,8 @@ const Team* Player::getTeam()
 {
 	return this->currentTeam;
 }
+
+const char* Player::getName()
+{
+	return this->name;
+}
