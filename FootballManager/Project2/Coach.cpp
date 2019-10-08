@@ -1,7 +1,7 @@
 #include "coach.h"
 
-Coach::Coach(const char* name, int age, const char* nationality, Team::Role type = (Team::Role) 0, Team* currentTeam = nullptr)
-	: Person(name, age, nationality), type(type), currentTeam(currentTeam)
+Coach::Coach(const char* name, int age, const char* nationality, Team* currentTeam)
+	: Person(name, age, nationality), currentTeam(currentTeam)
 {
 
 }
@@ -9,7 +9,7 @@ Coach::Coach(const char* name, int age, const char* nationality, Team::Role type
 void Coach::show() const
 {
 	Person::show(); // Call show method of parent (Person)
-	std::cout << "Role: " << type << "\nTeam: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	std::cout << "\nTeam: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
 }
 
 void Coach::setTeam(Team* team) 
@@ -26,7 +26,6 @@ void Coach::setTeam(Team* team)
 
 Coach::Coach(const Coach& other) : Person(other)
 {
-	type = other.type;
 	currentTeam = other.currentTeam;
 }
 
