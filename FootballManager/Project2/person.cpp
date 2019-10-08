@@ -17,8 +17,10 @@ Person::Person(const Person& other) : age(other.age) {
 
 Person::~Person()
 {
+	/*
 	delete[] name;
 	delete[] nationality;
+	*/ //Because the name and nationality are not dynamically allocated.
 }
 
 void Person::show() const
