@@ -9,7 +9,7 @@ Coach::Coach(const char* name, int age, const char* nationality, Team* currentTe
 void Coach::show() const
 {
 	Person::show(); // Call show method of parent (Person)
-	std::cout << "\nTeam: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	std::cout << "Team: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
 }
 
 void Coach::setTeam(Team* team) 
