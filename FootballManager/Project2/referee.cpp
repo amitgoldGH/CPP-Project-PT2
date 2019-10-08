@@ -1,7 +1,7 @@
 
 #include "referee.h"
 
-Referee::Referee(const char * name, int age, const char* nationality, int rating = 0) 
+Referee::Referee(const char * name, int age, const char* nationality, int rating) 
 	: Person(name,age,nationality), rating(rating), gamesPlayed(0)
 {
 
