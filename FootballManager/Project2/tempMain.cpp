@@ -55,6 +55,7 @@ int main()
 	Match match(&t1, &t2, &ref);
 	cout << endl;
 	match.show();
+
 	cout << "\n---------------------------------------------------------------------\n";
 	cout << "Team1: \n";
 	t1.show();

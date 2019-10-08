@@ -23,6 +23,7 @@ public:
 	const Player& operator++(); // Added prefix operator -Amit
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles #Goals*
 	const Team* getTeam(); // Added to check what team a player is in -Amit
+	const char* getName();
 	~Player();
 
 protected:

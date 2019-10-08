@@ -88,6 +88,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -132,7 +135,9 @@
   <ItemGroup>
     <ClCompile Include="Coach.cpp" />
     <ClCompile Include="Coach_Player.cpp" />
+    <ClCompile Include="fixture.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="match.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="referee.cpp" />
