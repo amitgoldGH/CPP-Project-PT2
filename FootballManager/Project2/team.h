@@ -3,14 +3,16 @@
 #include "person.h" // For NAME_SIZE definition.
 #include "coach.h"
 #include "manager.h"
+#include <ctime>    // For time()
+#include <cstdlib>  // For srand() and rand()
+
+#define LINEUP_MAX_SIZE 5 // size of the team lineup 
+#define BENCH_SIZE_MULTI 3 // Multiplier for bench size.
+// Added array for each role for toString purposes -Amit
+
 class Coach;
 class Player;
 class Manager;
-
-const int LINEUP_MAX_SIZE = 5;// size of the team lineup 
-const int BENCH_SIZE_MULTI = 3; // Multiplier for bench size.
-// Added array for each role for toString purposes -Amit
-
 class Team 
 {
 
@@ -29,8 +31,8 @@ public:
 	const Team& operator+=(int points); // Changed from operator+ confirmed with Riki it was a mistake.
 	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more pointprivate:
 	const char* getName() const; // Added method for Player to display team name, as team name is private -Amit
-
-	void show() const;
+	bool isReady() const; //  Check if lineup is full and team is ready for a match
+	void show() const; // Print team's information to console.
 private:
 	char name[NAME_SIZE];
 	Manager * manager;
