@@ -116,11 +116,31 @@ void Team::addPlayer(Player* player)
 
 const Team& Team::operator+=(int points)
 {
-	Team::points += points;
+	if (points != 0) 
+	{
+		this->points += points;
+		if (this->isReady())
+		{
+			int r;
+			for (int i = 0; i < points; ++i)
+			{
+				r = (rand() % (LINEUP_MAX_SIZE - 1)); // Generates a number [0 , LINEUP_MAX_SIZE - 1]
+				std::cout << this->lineup[r]->getName() << " Has scored a goal." << std::endl;
+				++(*this->lineup[r]); // Increase the number of goals of a random player from the lineup.
+			}
+		}
+	}
 	return *this;
 }
 
 bool Team::operator>=(const Team& otherTeam) const
 {
 	return this->points >= otherTeam.points;
+}
+
+bool Team::isReady() const // Check if lineup is full.
+{
+	if (players_In_Lineup == LINEUP_MAX_SIZE)
+		return true;
+	return false;
 }
