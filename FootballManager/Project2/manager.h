@@ -12,10 +12,11 @@ private:
 	int yearsOfExperience;
 	Team * currentTeam;
 	Manager(const Manager& other) = default;
-	~Manager();
 
 public:
-	Manager(const char *name, int age, const char* nationality,int yearsOfExperience);
+	Manager(const char *name, int age, const char* nationality,int yearsOfExperience, Team* currTeam = nullptr);
 	void setTeam(Team * team);
+	~Manager();
+	void show() const;
 };
 #endif //__MANAGER_H
