@@ -2,7 +2,7 @@
 
 Player::Player(const char * name, int age, const char* nationality,
 	int attack, int defence, int goalkeeping, int goalScored, int value,
-	Team::Role role, Team* currentTeam)
+	Role role, Team* currentTeam)
 	: Person(name, age, nationality), attack(attack), defence(defence),
 	goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(currentTeam) {}
@@ -50,4 +50,9 @@ const Player& Player::operator++() // Prefix "++X"
 bool Player::operator>=(const Player& player) const
 {
 	return goalScored >= player.goalScored;
+}
+
+const Team* Player::getTeam()
+{
+	return this->currentTeam;
 }
