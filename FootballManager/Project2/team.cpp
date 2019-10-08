@@ -29,7 +29,7 @@ void Team::show() const
 
 Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
 	Player** lineup, Player** benchPlayers, int lineup_Size, int bench_Size, int points) 
-	: manager(manager), coaches(coaches), lineup(lineup), benchPlayers(benchPlayers),
+	: manager(manager), coaches(coaches),
 	players_In_Lineup(lineup_Size), players_On_Bench(bench_Size), points(points)
 {
 	strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
@@ -40,25 +40,26 @@ Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
 	if (manager != nullptr)
 		manager->setTeam(this);
 
-	if (Team::lineup == nullptr) // If a lineup wasn't given, dynamically allocate one of size LINEUP_SIZE
-	{
-		Team::lineup = new Player*[LINEUP_MAX_SIZE];
+	if (lineup == nullptr) // If a lineup wasn't given, make all slots nullptr.
 		for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
 			Team::lineup[i] = nullptr;
-	}
-	if (Team::benchPlayers == nullptr)  // If a benchPlayer array wasn't given, allocate one LINEUP_SIZE times 3.
-	{
-		Team::benchPlayers = new Player*[LINEUP_MAX_SIZE * BENCH_SIZE_MULTI];
+	else // if lineup given, copy all the slots.
+		for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
+			Team::lineup[i] = lineup[i];
+
+	if (benchPlayers == nullptr)  // If a benchPlayer array wasn't given, allocate one LINEUP_SIZE times 3.
 		for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
 			Team::benchPlayers[i] = nullptr;
-	}
+	else // if bench given, copy all the slots.
+		for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
+			Team::benchPlayers[i] = benchPlayers[i];
 }
 
 Team::~Team() 
 {
 	// delete[] name; not dynamically assigned -Amit
-	delete[] benchPlayers;
-	delete[] lineup;
+	// delete[] benchPlayers; not dynamically assigned -Amit
+	// delete[] lineup; not dynamically assigned -Amit
 
 }
 

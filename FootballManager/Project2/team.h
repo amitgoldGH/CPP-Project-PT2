@@ -35,9 +35,9 @@ private:
 	char name[NAME_SIZE];
 	Manager * manager;
 	Coach * coaches;
-	Player** benchPlayers; // Changed to Pointer array from single pointer, needs dynamic allocation
-	Player** lineup; // Changed to Pointer array from single pointer,  needs dynamic allocation
-					 //to allow multiple player pointers in the array
+	Player* benchPlayers[LINEUP_MAX_SIZE * BENCH_SIZE_MULTI]; // Changed to pointer array
+	Player* lineup[LINEUP_MAX_SIZE]; // Changed to pointer array
+					 
 	int players_In_Lineup; // Added to have phys size of array -Amit
 	int players_On_Bench; // Added to have phys size of array -Amit
 	int points;
