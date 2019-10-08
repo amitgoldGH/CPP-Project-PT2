@@ -71,5 +71,8 @@
     <ClCompile Include="referee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="match.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

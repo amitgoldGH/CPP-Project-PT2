@@ -16,3 +16,9 @@ void Referee::show() const
 Referee::~Referee()
 {
 }
+
+const Referee& Referee::operator++()
+{
+	++gamesPlayed;
+	return *this;
+}

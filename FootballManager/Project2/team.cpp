@@ -116,7 +116,7 @@ void Team::addPlayer(Player* player)
 
 const Team& Team::operator+=(int points)
 {
-	if (points != 0) 
+	if (points != 0)
 	{
 		this->points += points;
 		if (this->isReady())
