@@ -33,6 +33,7 @@ public:
 	const char* getName() const; // Added method for Player to display team name, as team name is private -Amit
 	bool isReady() const; //  Check if lineup is full and team is ready for a match
 	void show() const; // Print team's information to console.
+	Player** getLineup() const;
 private:
 	char name[NAME_SIZE];
 	Manager * manager;
