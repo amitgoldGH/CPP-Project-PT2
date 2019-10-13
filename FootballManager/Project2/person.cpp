@@ -28,3 +28,9 @@ void Person::show() const
 	std::cout << "Name: " << this->name << "\nAge: " << this->age
 		<< "\nNationality: " << this->nationality << std::endl;
 }
+
+std::ostream& operator<<(std::ostream& os, const Person& person)
+{
+	os << person.name << " " << person.age << " " << person.nationality;
+	return os;
+}
