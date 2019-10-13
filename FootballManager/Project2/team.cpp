@@ -7,6 +7,7 @@ const char* Team::getName() const
 void Team::show() const
 {
 	std::cout << "Team Name: " << name 
+		<< "\nPoints: " << points
 		<< "\nTeam Manager: \n"; manager->show();
 	std::cout << "\nTeam Coach: \n"; coaches->show();
 	
@@ -25,6 +26,11 @@ void Team::show() const
 			benchPlayers[i]->show();
 			std::cout << std::endl;
 		}
+}
+
+Player** Team::getLineup() const
+{
+	return (Player**)lineup;
 }
 
 Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
@@ -119,6 +125,7 @@ const Team& Team::operator+=(int points)
 	if (points != 0)
 	{
 		this->points += points;
+		/*
 		if (this->isReady())
 		{
 			int r;
@@ -129,6 +136,7 @@ const Team& Team::operator+=(int points)
 				++(*this->lineup[r]); // Increase the number of goals of a random player from the lineup.
 			}
 		}
+		*/
 	}
 	return *this;
 }
