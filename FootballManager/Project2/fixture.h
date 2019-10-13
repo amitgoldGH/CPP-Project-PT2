@@ -15,7 +15,7 @@ public:
 	Fixture(const Fixture& other);
 	
 
-	friend ostream& operator<<(ostream& os,const Fixture& fixture);
+	friend std::ostream& operator<<(std::ostream& os,const Fixture& fixture);
 
 };
 #endif // !__FIXTURE_H
