@@ -14,7 +14,7 @@ protected:
 public:
 	Person(const char* name, int age, const char* nationality);
 	virtual void show() const =0; // Set as virtual, so inheritors can override -Amit == changed to abstract - asaf
-
+	virtual friend std::ostream& operator<<(std::ostream& os, const Person& person);
 };
 
 #endif //__PERSON_H
