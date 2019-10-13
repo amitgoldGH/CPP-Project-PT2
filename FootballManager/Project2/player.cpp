@@ -61,3 +61,7 @@ const char* Player::getName()
 {
 	return this->name;
 }
+
+std::ostream& operator<<(std::ostream& os, const Player& player)
+{
+}
