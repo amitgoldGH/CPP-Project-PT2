@@ -7,7 +7,7 @@ Player::Player(const char * name, int age, const char* nationality,
 	goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(currentTeam) {}
 
-Player::Player(const Player& other) 
+Player::Player(const Player& other)
 	: Person(other.name, other.age, other.nationality),
 	attack(other.attack), defence(other.defence),
 	goalkeeping(other.goalkeeping), goalScored(other.goalScored), value(other.value),
@@ -18,9 +18,25 @@ Player::~Player() {}
 void Player::show() const
 {
 	Person::show(); // Call show method of parent (Person)
-	std::cout << "Attack: " << attack << "\nDefence: " << defence << "\nGoal-Keeping: " << goalkeeping
-		<< "\nGoal-Scored: " << goalScored << "\nRate: " << getRate() << "\nValue: " << value << "\nRole: " << Roles[role]
-		<< "\nTeam: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	//std::cout.setf(std::ios::left);
+	
+	std::cout.width(8);
+	std::cout << attack;
+	std::cout.width(8);
+	std::cout << defence;
+	std::cout.width(8);
+	std::cout << goalkeeping;
+	std::cout.width(8);
+	std::cout << goalScored;
+	std::cout.width(8);
+	std::cout.precision(4);
+	std::cout << getRate();
+	std::cout.width(8);
+	std::cout << value;
+	std::cout.width(15);
+	std::cout << Roles[role];
+	std::cout.width(10);
+	std::cout << ((currentTeam == nullptr) ? "None" : currentTeam->getName());
 
 }
 
@@ -64,4 +80,8 @@ const char* Player::getName()
 
 std::ostream& operator<<(std::ostream& os, const Player& player)
 {
+	os << "Attack: " << player.attack << "\nDefence: " << player.defence << "\nGoal-Keeping: " << player.goalkeeping
+		<< "\nGoal-Scored: " << player.goalScored << "\nRate: " << player.getRate() << "\nValue: " << player.value << "\nRole: " << Roles[player.role]
+		<< "\nTeam: " << ((player.currentTeam == nullptr) ? "None" : player.currentTeam->getName());
+	return os;
 }

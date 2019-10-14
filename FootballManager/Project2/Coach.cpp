@@ -8,8 +8,17 @@ Coach::Coach(const char* name, int age, const char* nationality, Team* currentTe
 
 void Coach::show() const
 {
+	std::cout.setf(std::ios::left);
+	std::cout.width(10);
+	std::cout << "Name";
+	std::cout.width(5);
+	std::cout << "Age";
+	std::cout.width(13);
+	std::cout << "Nationality";
+	std::cout.width(8);
+	std::cout << "Team" << std::endl;
 	Person::show(); // Call show method of parent (Person)
-	std::cout << "Team: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	std::cout <<  ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
 }
 
 void Coach::setTeam(Team* team) 

@@ -14,11 +14,11 @@ private:
 	char name[30];
 	int numberOfteams;
 	int numberOfReferees;
-	Team * teams;
+	Team* teams;
 	Referee * referees;
 	int numberOfFixtures;
 	int playedFixtures;
-	Fixture * fixtures;
+	Fixture* fixtures;
 public:
 	League(const char * name, int numberOfTeams,
 		Team * teams = nullptr, int numberofreferees = 0,

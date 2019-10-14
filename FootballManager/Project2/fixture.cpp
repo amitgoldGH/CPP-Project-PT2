@@ -12,4 +12,5 @@ Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.mat
 std::ostream& operator<<(std::ostream& os, const Fixture& fixture)
 {
 	os << fixture.number << " " << fixture.matches;
+	return os;
 }

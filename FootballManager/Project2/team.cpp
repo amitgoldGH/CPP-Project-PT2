@@ -8,10 +8,34 @@ void Team::show() const
 {
 	std::cout << "Team Name: " << name 
 		<< "\nPoints: " << points
-		<< "\nTeam Manager: \n"; manager->show();
-	std::cout << "\nTeam Coach: \n"; coaches->show();
+		<< "\n" << name << "'s Manager: \n"; manager->show();
+	std::cout << "\n" << name << "'s Coach: \n"; coaches->show();
 	
-	std::cout << "\nLineup: \n" << std::endl;
+	std::cout << "\nLineup:" << std::endl;
+	std::cout.setf(std::ios::left);
+	std::cout.width(10);
+	std::cout << "Name";
+	std::cout.width(5);
+	std::cout << "Age";
+	std::cout.width(13);
+	std::cout << "Nationality";
+	std::cout.width(8);
+	std::cout << "Attack";
+	std::cout.width(8);
+	std::cout << "Defense";
+	std::cout.width(8);
+	std::cout << "G-Keep";
+	std::cout.width(8);
+	std::cout << "G-Score";
+	std::cout.width(8);
+	std::cout << "Rate";
+	std::cout.width(8);
+	std::cout << "Value";
+	std::cout.width(15);
+	std::cout << "Role";
+	std::cout.width(10);
+	std::cout << "Team\n" << std::endl;
+
 	for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
 		if (this->lineup[i] != nullptr)
 		{
@@ -19,7 +43,7 @@ void Team::show() const
 			std::cout << std::endl;
 		}
 	
-	std::cout << "\nBench bois: " << std::endl;
+	std::cout << "\nBench players: " << std::endl;
 	for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
 		if (benchPlayers[i] != nullptr)
 		{
