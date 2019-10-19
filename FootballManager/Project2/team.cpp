@@ -6,19 +6,53 @@ const char* Team::getName() const
 
 void Team::show() const
 {
-	std::cout << "Team Name: " << name 
-		<< "\nTeam Manager: \n"; manager->show();
-	std::cout << "\nTeam Coach: \n"; coaches->show();
-	
-	std::cout << "\nLineup: \n" << std::endl;
+	std::cout.fill('*');
+	std::cout.width(50);
+	std::cout << std::endl << "" << std::endl;
+	std::cout.fill(' ');
+	std::cout << "\t\t" << name << std::endl;
+	std::cout.fill('*');
+	std::cout.width(50);
+	std::cout << "" << std::endl;
+	std::cout.fill(' ');
+
+	std::cout << "Points: " << points
+		<< "\n\n" << name << "'s Manager: \n"; manager->show();
+	std::cout << "\n" << name << "'s Coach: \n"; coaches->show();
+
+	std::cout << "\nLineup:" << std::endl;
+	std::cout.setf(std::ios::left);
+	std::cout.width(10);
+	std::cout << "Name";
+	std::cout.width(5);
+	std::cout << "Age";
+	std::cout.width(13);
+	std::cout << "Nationality";
+	std::cout.width(8);
+	std::cout << "Attack";
+	std::cout.width(8);
+	std::cout << "Defense";
+	std::cout.width(8);
+	std::cout << "G-Keep";
+	std::cout.width(8);
+	std::cout << "G-Score";
+	std::cout.width(8);
+	std::cout << "Rate";
+	std::cout.width(8);
+	std::cout << "Value";
+	std::cout.width(15);
+	std::cout << "Role";
+	std::cout.width(10);
+	std::cout << "Team\n" << std::endl;
+
 	for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
 		if (this->lineup[i] != nullptr)
 		{
 			this->lineup[i]->show();
 			std::cout << std::endl;
 		}
-	
-	std::cout << "\nBench bois: " << std::endl;
+
+	std::cout << "\nBench players: " << std::endl;
 	for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
 		if (benchPlayers[i] != nullptr)
 		{
@@ -27,14 +61,19 @@ void Team::show() const
 		}
 }
 
+Player** Team::getLineup() const
+{
+	return (Player**)lineup;
+}
+
 Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
-	Player** lineup, Player** benchPlayers, int lineup_Size, int bench_Size, int points) 
+	Player** lineup, Player** benchPlayers, int lineup_Size, int bench_Size, int points)
 	: manager(manager), coaches(coaches),
 	players_In_Lineup(lineup_Size), players_On_Bench(bench_Size), points(points)
 {
 	strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
 	Team::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow.
-	
+
 	if (coaches != nullptr)
 		coaches->setTeam(this);
 	if (manager != nullptr)
@@ -55,11 +94,17 @@ Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
 			Team::benchPlayers[i] = benchPlayers[i];
 }
 
-Team::~Team() 
+Team::Team()
+{
+}
+
+Team::~Team()
 {
 	// delete[] name; not dynamically assigned -Amit
 	// delete[] benchPlayers; not dynamically assigned -Amit
 	// delete[] lineup; not dynamically assigned -Amit
+
+
 
 }
 
@@ -119,6 +164,7 @@ const Team& Team::operator+=(int points)
 	if (points != 0)
 	{
 		this->points += points;
+		/*
 		if (this->isReady())
 		{
 			int r;
@@ -129,6 +175,7 @@ const Team& Team::operator+=(int points)
 				++(*this->lineup[r]); // Increase the number of goals of a random player from the lineup.
 			}
 		}
+		*/
 	}
 	return *this;
 }

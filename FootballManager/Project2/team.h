@@ -17,11 +17,15 @@ class Team
 {
 
 public:
+	Team();	//added for dynamic allocation - Asaf
+
 	Team(const char name[NAME_SIZE],
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
 		Player** lineup = nullptr,
-		Player** benchPlayers = nullptr, int lineup_Size = 0, int bench_Size = 0,
+		Player** benchPlayers = nullptr, 
+		int lineup_Size = 0, 
+		int bench_Size = 0,
 		int points=0);
 	~Team();
 
@@ -33,7 +37,9 @@ public:
 	const char* getName() const; // Added method for Player to display team name, as team name is private -Amit
 	bool isReady() const; //  Check if lineup is full and team is ready for a match
 	void show() const; // Print team's information to console.
+	Player** getLineup() const;
 private:
+
 	char name[NAME_SIZE];
 	Manager * manager;
 	Coach * coaches;

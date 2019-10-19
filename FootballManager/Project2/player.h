@@ -26,6 +26,9 @@ public:
 	const char* getName();
 	~Player();
 
+	friend std::ostream& operator<<(std::ostream& os, const Player& player);
+
+
 protected:
 	int attack;
 	int defence;

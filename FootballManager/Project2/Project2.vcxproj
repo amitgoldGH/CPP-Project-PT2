@@ -136,6 +136,7 @@
     <ClCompile Include="Coach.cpp" />
     <ClCompile Include="Coach_Player.cpp" />
     <ClCompile Include="fixture.cpp" />
+    <ClCompile Include="league.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="match.cpp" />
     <ClCompile Include="person.cpp" />

@@ -27,7 +27,20 @@ Manager::~Manager()
 
 void Manager::show() const
 {
+	std::cout.setf(std::ios::left);
+	std::cout.width(10);
+	std::cout << "Name";
+	std::cout.width(5);
+	std::cout << "Age";
+	std::cout.width(13);
+	std::cout << "Nationality";
+	std::cout.width(8);
+	std::cout << "YOE";
+	std::cout.width(8);
+	std::cout << "Team" << std::endl;
 	Person::show();
-	std::cout << "Years of Experience: " << yearsOfExperience 
-		<< "\nTeam: " << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	std::cout.width(8);
+	std::cout << yearsOfExperience;
+	std::cout.width(8);
+	std::cout << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
 }

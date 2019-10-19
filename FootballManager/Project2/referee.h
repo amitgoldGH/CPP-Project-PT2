@@ -10,6 +10,7 @@ private:
 	int gamesPlayed;
 	int rating;
 public:
+	Referee(); //added for dynamic allocation - Asaf
 	Referee(const char * name, int age, const char* nationality,int rating = 0);
 	void show() const;
 	~Referee();

@@ -74,6 +74,9 @@
     <ClCompile Include="match.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="league.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="fixture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

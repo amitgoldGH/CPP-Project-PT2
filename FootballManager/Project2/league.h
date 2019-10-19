@@ -14,13 +14,14 @@ private:
 	char name[30];
 	int numberOfteams;
 	int numberOfReferees;
-	Team * teams;
+	Team* teams = new Team[0];
 	Referee * referees;
 	int numberOfFixtures;
 	int playedFixtures;
-	Fixture * fixtures;
+	Fixture* fixtures;
+	bool onGoing = false; //added for isEnded() - Asaf
 public:
-	League(const char * name, int numberOfTeams,
+	League(const char* name, int numberOfTeams = 0, //added default 0
 		Team * teams = nullptr, int numberofreferees = 0,
 		Referee * referees = nullptr, int numberOfFixtures = 0,
 		int playedFixtures = 0, Fixture * fixtures = nullptr);
@@ -30,7 +31,7 @@ public:
 	void setNumberOfReferees(int numberOfreferees);
 	void addReferee(Referee * referee);
 	void startSeason();
-	const Fixture& playFixture();
+	//const Fixture& playFixture(); - commented, not used right now - Asaf
 	void showLeadingTeam() const;
 	void showLoosingTeam() const;
 	void showLeadingScorer() const;
