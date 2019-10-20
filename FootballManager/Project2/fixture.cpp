@@ -7,7 +7,6 @@ Fixture::Fixture(int number, int numberOfMatches, Match* matches) : number(numbe
 
 Fixture::~Fixture()
 {
-	
 }
 
 Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
@@ -22,6 +21,7 @@ void Fixture::addMatch(Match * m)
 	temp[numberOfMatches] = *(new Match(*m));
 	matches = temp;
 	numberOfMatches++;
+	delete[] temp;
 }
 
 void Fixture::Show()

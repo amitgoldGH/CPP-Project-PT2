@@ -8,13 +8,13 @@ Match::Match()
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 	: homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
-	result[0] = 0;
-	result[1] = 0;
+	resultHome = 0;
+	resultAway = 0;
 	++(*referee);
 	this->playMatch();
-	if (result[0] > result[1]) // Home wins
+	if (resultHome > resultAway) // Home wins
 		(*homeTeam) += 3;
-	else if (result[0] < result[1]) // Away wins
+	else if (resultHome < resultAway) // Away wins
 		(*awayTeam) += 3;
 	else // Draw
 	{
@@ -40,19 +40,31 @@ void Match::playMatch()
 				if (r < 6)
 				{
 					currLineup = homeTeam->getLineup();
-					++(result[0]);
+					++(resultHome);
 				}
 				else
 				{
 					currLineup = awayTeam->getLineup();
-					++(result[1]);
+					++(resultAway);
 				}
 
-				std::cout << currLineup[scoreIndex]->getName() << " of " << currLineup[scoreIndex]->getTeam()->getName() << " Has scored a goal." << std::endl;
+				//std::cout << currLineup[scoreIndex]->getName() << " of " << currLineup[scoreIndex]->getTeam()->getName() << " Has scored a goal." << std::endl;
 				++(*currLineup[scoreIndex]);
 				--totalScore;
 			}
 		}
+}
+
+Team * Match::getWinningTeam()
+{
+	if (resultHome > resultAway) // Home wins
+		return homeTeam;
+	else if (resultHome < resultAway) // Away wins
+		return awayTeam;
+	else // Draw
+	{
+		return homeTeam; //TODO: fix to return team with most points later
+	}
 }
 
 Match::~Match()
@@ -63,7 +75,8 @@ Match::~Match()
 void Match::show() const
 {
 	std::cout << homeTeam->getName() << " vs " << awayTeam->getName();
-	std::cout << " Endded with score " << result[0] << " - " << result[1] << std::endl; //bug here: result[1] contains garbage
+	std::cout << " Endded with score " << resultHome << " - " << resultAway << std::endl; //bug here: resultAway contains garbage
+
 	//std::cout << "Referee: " << std::endl;
-	referee->show();
+	//referee->show();
 }

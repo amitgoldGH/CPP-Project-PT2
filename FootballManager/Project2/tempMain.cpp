@@ -3,7 +3,7 @@
 #include "league.h"
 using namespace std;
 
-int main()
+void main()
 {
 	
 	Player a1("garoshua", 15, "Canadian", 2, 1, 1, 0, 50000, Player::striker);
@@ -90,11 +90,11 @@ int main()
 
 
 
-	League l("Test League");
+	League l("Test");
 	l.addTeam(&t1);
 	l.addTeam(&t2);
-	//l.addTeam(&t3);
-	//l.addTeam(&t4);
+	l.addTeam(&t3);
+	l.addTeam(&t4);
 	l.addReferee(&ref);
 	l.show();
 
@@ -102,10 +102,8 @@ int main()
 	l.startSeason();
 	std::cout << "***********************************\n\t\Ending\n***********************************" << std::endl;
 
-	l.show();
+	//l.show();
 	//Match match(&t1, &t2, &ref);
 	cout << endl;
 	//match.show();
-
-	return 0;
 }

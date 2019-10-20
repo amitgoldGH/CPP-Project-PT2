@@ -1,13 +1,14 @@
 #pragma warning (disable:4996);
 #include "league.h"
-League::League(const char * name, int numberOfTeams, Team * teams, int numberofreferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures) 
+League::League(const char * lname, int numberOfTeams, Team * teams, int numberofreferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
 {
-	name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	//name = new char[strlen(lname) + 1];
+	strcpy(this->name, lname);
 }
 
 League::~League()
 {
+	//delete name;
 	delete[] teams;
 	delete[] referees;
 	delete[] fixtures;
@@ -16,18 +17,18 @@ League::~League()
 void League::addTeam(Team * team)
 {
 
-		//reallocation before adding
+	//reallocation before adding
+	{
+		Team* temp = new Team[numberOfteams + 1];
+		for (int i = 0; i < numberOfteams; i++)
 		{
-			Team* temp = new Team[numberOfteams+1];
-			for (int i = 0; i < numberOfteams; i++)
-			{
-				temp[i] = teams[i];
-			}
-			temp[numberOfteams] = *(new Team(*team));
-			teams = temp;
-			numberOfteams++;
+			temp[i] = teams[i];
 		}
-	
+		temp[numberOfteams] = *(new Team(*team));
+		teams = temp;
+		numberOfteams++;
+	}
+
 }
 
 
@@ -58,35 +59,36 @@ assign teams in matches and put into fixtures, winning team move of to the next 
 ***/
 void League::startSeason()
 {
-
-
-
-	
-	int fixture_count = 1;
 	onGoing = true;
-	  //THIS PART NEEDS FIXING. HEAP CORRUPTION
-	//while (numberOfteams / (2 * fixture_count) > 1)
+	Team* t_list = teams;
+	//calculate number of fixtures
+	for (int i = numberOfteams; i > 1; i /= 2)
 	{
-		Match *matches = new Match[0];
-		int matchNum = 0;
-		int i = 0, fix = 1;
-		for (i = 0; i < numberOfteams; i += 2)
-		{
-			if (teams != nullptr && teams + 1 != nullptr)
-			{
-				matches[matchNum] = Match(&teams[i], &teams[i + 1], &referees[0]);
-				matchNum++;
-			}
-		}
-		
-		Fixture f1(fix, i/2, matches);		// <= BUG HERE ?
-		f1.Show();
-
-
+		numberOfFixtures++;
 	}
+	
+	//divide teams to fixtures and begin matches
+	for (int j = 0; j < numberOfFixtures; j++)
+	{
+		Match *matches = new Match[0];								//set of matches for fixture
+		Team* n_list = new Team[numberOfteams / (2 * (j+1))];		//set of teams for the next fixture
+		int matchNum = 0, i = 0;
+		for (; i < numberOfteams/(j+1); i += 2)
+		{
+				matches[matchNum] = Match(&t_list[i], &t_list[i + 1], &referees[0]);
+				n_list[matchNum] = *(matches[matchNum].getWinningTeam());
+				matchNum++;
+		}
+
+		Fixture f(j+1, i / 2, matches);		// <= BUG HERE ?
+		f.Show();
+		t_list = n_list;
+		//delete matches;
+	}
+
 	onGoing = false;
 
-	
+
 }
 /*
 const Fixture & League::playFixture()
@@ -113,8 +115,8 @@ void League::showMostActiveReferee() const
 
 void League::show() const
 {
-	std::cout << std::endl << "Welcome to "<<name<<" League!" << std::endl;
-	std::cout << "Currently registered "<<numberOfteams<< " teams" << std::endl;
+	std::cout << std::endl << "Welcome to " << name << " League!" << std::endl;
+	std::cout << "Currently registered " << numberOfteams << " teams" << std::endl;
 
 	for (int i = 0; i < numberOfteams; i++)
 	{
