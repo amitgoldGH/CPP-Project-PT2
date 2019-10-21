@@ -1,16 +1,21 @@
 #include "match.h"
 
-
 Match::Match()
 {
+	resultHome = 0;
+	resultAway = 0;
+	srand(time(0));	//moved for testing
+
 }
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 	: homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
+
 	resultHome = 0;
 	resultAway = 0;
 	++(*referee);
+
 	this->playMatch();
 	if (resultHome > resultAway) // Home wins
 		(*homeTeam) += 3;
@@ -26,10 +31,10 @@ Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 
 void Match::playMatch()
 {
+
 	if (homeTeam != nullptr && awayTeam != nullptr)
 		if (homeTeam->isReady() && awayTeam->isReady())
 		{
-			srand(time(0));
 			int r=0, scoreIndex=0;
 			Player** currLineup;
 			int totalScore = (rand() % MAX_GOALS_IN_MATCH); // total goals in this match
@@ -75,8 +80,6 @@ Match::~Match()
 void Match::show() const
 {
 	std::cout << homeTeam->getName() << " vs " << awayTeam->getName();
-	std::cout << " Endded with score " << resultHome << " - " << resultAway << std::endl; //bug here: resultAway contains garbage
-
-	//std::cout << "Referee: " << std::endl;
-	//referee->show();
+	std::cout << " Endded with score " << resultHome << " - " << resultAway; 
+	std::cout << "   Referee: " << referee->getName() << std::endl;
 }

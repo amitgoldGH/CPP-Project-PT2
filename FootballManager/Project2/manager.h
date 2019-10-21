@@ -14,7 +14,7 @@ private:
 	Manager(const Manager& other) = default;
 
 public:
-	Manager(const char *name, int age, const char* nationality,int yearsOfExperience, Team* currTeam = nullptr);
+	Manager(const char* name, int age, const char*  nationality,int yearsOfExperience, Team* currTeam = nullptr);
 	void setTeam(Team * team);
 	~Manager();
 	void show() const;

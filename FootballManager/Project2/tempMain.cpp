@@ -48,7 +48,10 @@ void main()
 	Team t4("Justice League", &m4, &c4); //no lineup and no bench, points = 0;
 
 
-	Referee ref("Refer-man", 34, "Referistan");
+	Referee ref1("Refer-man", 34, "Referistan");
+	Referee ref2("Thanos", 750, "ALarsian");
+	Referee ref3("Talos", 9999, "Imperial");
+
 	
 // -------------------------------------------------------
 	t1.addPlayer(&a1);
@@ -75,19 +78,16 @@ void main()
 	t4.addPlayer(&d3);
 	t4.addPlayer(&d4);
 	t4.addPlayer(&d5);
-
+	/*
 	cout << "\nAfter adding player: " << endl;
 	cout << "Team1: \n";
-	//t1.show();
+	t1.show();
 	cout << "\n---------------------------------------------------------------------\n";
 	cout << "Team2: \n";
-	//t2.show();
+	t2.show();
 	cout << "\n---------------------------------------------------------------------\n";
-
+	*/
 // --------------------------------------------------------
-
-	cout << "\nPlaying a match: " << endl;
-
 
 
 	League l("Test");
@@ -95,15 +95,22 @@ void main()
 	l.addTeam(&t2);
 	l.addTeam(&t3);
 	l.addTeam(&t4);
-	l.addReferee(&ref);
+	l.addTeam(&t1);	//dup for testing
+	l.addTeam(&t2);	//dup for testing
+	l.addTeam(&t3);	//dup for testing
+	l.addTeam(&t4);	//dup for testing
+	l.addReferee(&ref1);
+	l.addReferee(&ref2);
+	l.addReferee(&ref3);
 	l.show();
 
 	std::cout << "***********************************\n\t\Starting\n***********************************" << std::endl;
 	l.startSeason();
 	std::cout << "***********************************\n\t\Ending\n***********************************" << std::endl;
-
-	//l.show();
-	//Match match(&t1, &t2, &ref);
+	std::cout << "\nWinning team is: "; l.showLeadingTeam();
+	std::cout << "\nLeading player is: "; l.showLeadingScorer();
+	std::cout << "\nMost active referee is: "; l.showMostActiveReferee();
+	std::cout << "\nLosing team is: "; l.showLoosingTeam();
+	//l.show();	//print to show league results
 	cout << endl;
-	//match.show();
 }

@@ -14,14 +14,14 @@ private:
 	char name[30];
 	int numberOfteams;
 	int numberOfReferees;
-	Team* teams = new Team[0];
+	Team* teams;
 	Referee * referees;
 	int numberOfFixtures;
 	int playedFixtures;
 	Fixture* fixtures;
 	bool onGoing = false; //added for isEnded() - Asaf
 public:
-	League(const char* name, int numberOfTeams = 0, //added default 0
+	League(const char*  name, int numberOfTeams = 0, //added default 0
 		Team * teams = nullptr, int numberofreferees = 0,
 		Referee * referees = nullptr, int numberOfFixtures = 0,
 		int playedFixtures = 0, Fixture * fixtures = nullptr);

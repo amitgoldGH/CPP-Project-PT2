@@ -1,6 +1,6 @@
 #include "coach.h"
 
-Coach::Coach(const char* name, int age, const char* nationality, Team* currentTeam)
+Coach::Coach(const char*  name, int age, const char*  nationality, Team* currentTeam)
 	: Person(name, age, nationality), currentTeam(currentTeam)
 {
 
@@ -18,7 +18,7 @@ void Coach::show() const
 	std::cout.width(8);
 	std::cout << "Team" << std::endl;
 	Person::show(); // Call show method of parent (Person)
-	std::cout <<  ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
+	std::cout << ((currentTeam == nullptr) ? "None" : currentTeam->getName()) << std::endl;
 }
 
 void Coach::setTeam(Team* team) 

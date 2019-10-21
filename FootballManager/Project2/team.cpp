@@ -1,5 +1,5 @@
 #include "team.h"
-const char* Team::getName() const
+const char*  Team::getName() const
 {
 	return name;
 }
@@ -64,6 +64,16 @@ void Team::show() const
 Player** Team::getLineup() const
 {
 	return (Player**)lineup;
+}
+
+int Team::getLineupSize()
+{
+	return LINEUP_MAX_SIZE;
+}
+
+int Team::getPoints()
+{
+	return points;
 }
 
 Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,

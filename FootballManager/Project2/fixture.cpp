@@ -18,7 +18,7 @@ void Fixture::addMatch(Match * m)
 	{
 		temp[i] = matches[i];
 	}
-	temp[numberOfMatches] = *(new Match(*m));
+	temp[numberOfMatches] = (Match(*m));
 	matches = temp;
 	numberOfMatches++;
 	delete[] temp;
@@ -32,9 +32,6 @@ void Fixture::Show()
 	{
 		matches[i].show();
 	}
-
-
-
 }
 
 
