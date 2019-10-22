@@ -13,13 +13,17 @@ Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.mat
 
 void Fixture::addMatch(Match * m)
 {
-	Match* temp = new Match[numberOfMatches + 1];
+	Match* increased_Matches = new Match[numberOfMatches + 1];
+	Match* temp;
 	for (int i = 0; i < numberOfMatches; i++)
 	{
-		temp[i] = matches[i];
+		increased_Matches[i] = matches[i];
 	}
-	temp[numberOfMatches] = (Match(*m));
-	matches = temp;
+	increased_Matches[numberOfMatches] = (Match(*m));
+	
+	temp = matches;
+	matches = increased_Matches;
+
 	numberOfMatches++;
 	delete[] temp;
 }
