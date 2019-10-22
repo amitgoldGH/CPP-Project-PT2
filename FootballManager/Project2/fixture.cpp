@@ -2,11 +2,13 @@
 
 Fixture::Fixture(int number, int numberOfMatches, Match* matches) : number(number), matches(matches), numberOfMatches(numberOfMatches)
 {
+
 }
 
 
 Fixture::~Fixture()
 {
+	delete[] matches;
 }
 
 Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
