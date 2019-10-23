@@ -5,13 +5,13 @@ Player::Player(const char*  name, int age, const char*  nationality,
 	Role role, Team* currentTeam)
 	: Person(name, age, nationality), attack(attack), defence(defence),
 	goalkeeping(goalkeeping), goalScored(goalScored), value(value),
-	role(role), currentTeam(currentTeam) {}
+	role(role), currentTeam(currentTeam), goalScored_In_Curr_League(0) {}
 
 Player::Player(const Player& other)
 	: Person(other.name, other.age, other.nationality),
 	attack(other.attack), defence(other.defence),
 	goalkeeping(other.goalkeeping), goalScored(other.goalScored), value(other.value),
-	role(other.role), currentTeam(other.currentTeam) {}
+	role(other.role), currentTeam(other.currentTeam), goalScored_In_Curr_League(other.goalScored_In_Curr_League) {}
 
 Player::~Player() {}
 
@@ -46,6 +46,12 @@ double Player::getRate() const
 	return res;
 }
 
+void Player::setLeagueGoal(int num)
+{
+	if (num >= 0)
+		goalScored_In_Curr_League = num;
+}
+
 void Player::setTeam(Team* team)
 {
 	currentTeam = team;
@@ -60,9 +66,14 @@ Player Player::operator++(int) // PostFix "X++"
 const Player& Player::operator++() // Prefix "++X"
 {
 	++goalScored;
+	++goalScored_In_Curr_League;
 	return *this;
 }
 
+int Player::getGoalCount()
+{
+	return goalScored;
+}
 bool Player::operator>=(const Player& player) const
 {
 	return goalScored >= player.goalScored;

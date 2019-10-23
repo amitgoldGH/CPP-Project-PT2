@@ -5,7 +5,8 @@ using namespace std;
 
 void main()
 {
-	
+	srand(time(0)); // Solved the issue with the same point results
+
 	Player a1("garoshua", 15, "Canadian", 2, 1, 1, 0, 50000, Player::striker);
 	Player a2("saoshua", 18, "American", 1, 1, 2, 0, 60000, Player::defender);
 	Player a3("baloshua", 11, "Argentinian", 3, 2, 2, 0, 45000, Player::midlefielder);
@@ -95,6 +96,7 @@ void main()
 	l.addTeam(&t2);
 	l.addTeam(&t3);
 	l.addTeam(&t4);
+	
 	l.addTeam(&t1);	//dup for testing
 	l.addTeam(&t2);	//dup for testing
 	l.addTeam(&t3);	//dup for testing
@@ -104,9 +106,9 @@ void main()
 	l.addReferee(&ref3);
 	l.show();
 
-	std::cout << "***********************************\n\t\Starting\n***********************************" << std::endl;
-	l.startSeason();
-	std::cout << "***********************************\n\t\Ending\n***********************************" << std::endl;
+	std::cout << "***********************************\n\tStarting\n***********************************" << std::endl;
+ 	l.startSeason();
+	std::cout << "***********************************\n\tEnding\n***********************************" << std::endl;
 	std::cout << "\nWinning team is: "; l.showLeadingTeam();
 	std::cout << "\nLeading player is: "; l.showLeadingScorer();
 	std::cout << "\nMost active referee is: "; l.showMostActiveReferee();

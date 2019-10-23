@@ -20,12 +20,14 @@ public:
 		Role role = (Role)0, Team* currentTeam = nullptr);
 	void setTeam(Team* team);
 	Player operator++(int); // This is a postfix operator. -Amit
-	const Player& operator++(); // Added prefix operator -Amit
+	const Player& operator++();
+	int getGoalCount();
+	// Added prefix operator -Amit
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles #Goals*
 	const Team* getTeam(); // Added to check what team a player is in -Amit
 	const char*  getName();
 	~Player();
-
+	void setLeagueGoal(int num);
 	friend std::ostream& operator<<(std::ostream& os, const Player& player);
 
 
@@ -34,6 +36,7 @@ protected:
 	int defence;
 	int goalkeeping;
 	int goalScored;
+	int goalScored_In_Curr_League;
 	int value;
 	Role role;
 	Team * currentTeam;

@@ -8,7 +8,7 @@ Fixture::Fixture(int number, int numberOfMatches, Match* matches) : number(numbe
 
 Fixture::~Fixture()
 {
-	delete[] matches;
+	 delete[] matches;
 }
 
 Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
