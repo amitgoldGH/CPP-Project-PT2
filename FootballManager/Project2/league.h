@@ -11,8 +11,10 @@ class League
 {
 
 private:
+	Team* leadingTeam;
+
 	char name[30];
-	int numberOfteams;
+	int numberOfTeams;
 	int numberOfReferees;
 	Team* teams;
 	Referee * referees;
@@ -21,7 +23,7 @@ private:
 	Fixture* fixtures;
 	bool onGoing = false; //added for isEnded() - Asaf
 public:
-	League(const char*  name, int numberOfTeams = 0, //added default 0
+	League(const char*  lname, int numberOfTeams = 0, //added default 0
 		Team * teams = nullptr, int numberofreferees = 0,
 		Referee * referees = nullptr, int numberOfFixtures = 0,
 		int playedFixtures = 0, Fixture * fixtures = nullptr);
