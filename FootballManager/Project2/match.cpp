@@ -2,16 +2,16 @@
 
 Match::Match()
 {
+	//srand(time(0));	//moved for testing
 	resultHome = 0;
 	resultAway = 0;
-	srand(time(0));	//moved for testing
 
 }
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 	: homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
-
+	//srand(time(0));	//moved for testing
 	resultHome = 0;
 	resultAway = 0;
 	++(*referee);
