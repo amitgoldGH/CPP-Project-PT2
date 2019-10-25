@@ -1,7 +1,7 @@
 #pragma warning (disable:4996)
 #include "league.h"
-League::League(std::string lname, int numberOfTeams, Team * teams, int numberofreferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
-	: name(lname) /*numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees), referees(referees),
+League::League(std::string lname, int numberOfTeams, Team * teams, int numberOfReferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
+	: name(lname) /*teams.size()(teams.size()), teams(teams), referees.size()(referees.size()), referees(referees),
 	numberOfFixtures(numberOfFixtures), playedFixtures(0), fixtures(fixtures)
 	*/
 {
@@ -19,41 +19,17 @@ League::~League()
 
 void League::addTeam(Team * team)
 {
-
-	//reallocation before adding
-	{
-		Team* temp = new Team[numberOfTeams + 1];
-		for (int i = 0; i < numberOfTeams; i++)
-		{
-			temp[i] = teams[i];
-		}
-		delete[] teams;	//clear old memory
-		temp[numberOfTeams] = (Team(*team));
-		teams = temp;
-		numberOfTeams++;
-	}
-
+	teams.push_back(*team);
 }
 
 
-void League::setNumberOfReferees(int numberOfreferees)
+void League::setNumberOfReferees(int numberOfReferees)
 {
 }
 
-void League::addReferee(Referee * referee)
+void League::addReferee(Referee* referee)
 {
-	//reallocation before adding
-	{
-		Referee* temp = new Referee[numberOfReferees + 1];
-		for (int i = 0; i < numberOfReferees; i++)
-		{
-			temp[i] = referees[i];
-		}
-		delete[] referees;	//clear old memory
-		temp[numberOfReferees] = (Referee(*referee));
-		referees = temp;
-		numberOfReferees++;
-	}
+	referees.push_back(*referee);
 }
 
 
@@ -65,20 +41,20 @@ assign teams in matches and put into fixtures, winning team move of to the next 
 void League::startSeason()
 {
 	//Reset every player's current league score to 0, used to see how many goals scored in this specific league.
-	for (int x = 0; x < numberOfTeams; ++x) 
+	for (Team t : teams)
 	{
-		Player** curr_Lineup = teams[x].getLineup();
+		Player** curr_Lineup = t.getLineup();
 		for (int y = 0; y < LINEUP_MAX_SIZE; ++y)
 		{
 			curr_Lineup[y]->setLeagueGoal(0);
 		}
 	}
-
-
+	   
 	onGoing = true;
-	Team* t_list = teams;
+
+	std::vector<Team> t_list = teams;
 	//calculate number of fixtures
-	for (int i = numberOfTeams; i > 1; i /= 2)
+	for(int i = teams.size(); i > 1; i /= 2)
 	{
 		numberOfFixtures++;
 	}
@@ -87,28 +63,28 @@ void League::startSeason()
 	for (int j = 0; j < numberOfFixtures; j++)
 	{
 		Match* matches;
-		Team* n_list;
-		matches = new Match[numberOfTeams / 2];				//set of matches for fixture
-		n_list = new Team[numberOfTeams / (2 * (j+1))];		//set of teams for the next fixture, decreces by half for every fixture
+		std::vector<Team> n_list;
+		matches = new Match[teams.size() / 2];				//set of matches for fixture
+		//n_list.capacity = teams.size() / (2 * (j+1));		//set of teams for the next fixture, decreces by half for every fixture
 		int matchNum = 0, i = 0;
-		for (; i < numberOfTeams/(j+1); i += 2)
+		for (; i < teams.size()/(j+1); i += 2)
 		{
-			matches[matchNum] = Match(&t_list[i], &t_list[i + 1], &referees[(rand() % numberOfReferees)]); //create match
-			n_list[matchNum] = *matches[matchNum].getWinningTeam();				 //move winning team to the next fixture
+			matches[matchNum] = Match(&t_list[i], &t_list[i + 1], &referees[(rand() % referees.size())]); //create match
+			n_list.push_back(*matches[matchNum].getWinningTeam());				 //move winning team to the next fixture
 			matchNum++;
 		}
 
 		Fixture(j+1, i / 2, matches).Show();					//registed and show fixture
 		if (j > 0)
 		{
-			Team* temp = t_list;
+			std::vector<Team> temp = t_list;
 			t_list = n_list;
-			delete[] temp;
+			//delete[] temp;
 		}
 		else
 			t_list = n_list;
 	}
-	leadingTeam = &t_list[0];
+	leadingTeam = t_list.front();
 	onGoing = false;
 }
 /*		NOT IN USE
@@ -120,28 +96,18 @@ const Fixture & League::playFixture()
 */
 void League::showLeadingTeam() const
 {
-	/*
-	Team temp = teams[0];
-	for (int i = 0; i < numberOfTeams; i++)
-	{
-		if (teams[i] >= temp)
-			temp = teams[i];
-	}
-	//temp.show();
-	*/
-	if (leadingTeam != nullptr)
-		std::cout << leadingTeam->getName() << " With " << leadingTeam->getPoints() << " Points";
+		std::cout << leadingTeam.getName() << " With " << leadingTeam.getPoints() << " Points";
 }
 
 void League::showLoosingTeam() const
 {
-	Team temp = teams[0];
-	for (int i = 0; i < numberOfTeams; i++)
+	Team temp = teams.front();
+	for (Team t : teams)
 	{
-		if (!(teams[i] >= temp))
-			temp = teams[i];
+		if (!(t >= temp))
+			temp = t;
 	}
-	//temp.show();
+
 	std::cout << temp.getName() << " With " << temp.getPoints() << " Points";
 }
 
@@ -150,7 +116,7 @@ void League::showLeadingScorer() const
 	//TODO::Implement this
 	Player* leadingPlayer = teams[0].getLineup()[0]; //  Set default.
 	int currGoal = leadingPlayer->getGoalCount();
-	for (int i = 0; i < numberOfTeams; ++i)
+	for (int i = 0; i < teams.size(); ++i)
 	{
 		Player** currTeam = teams[i].getLineup();
 		for (int j = 0; j < LINEUP_MAX_SIZE; ++j)
@@ -166,12 +132,13 @@ void League::showLeadingScorer() const
 
 void League::showMostActiveReferee() const
 {
-	Referee temp = referees[0];
-	for (int i = 0; i < numberOfReferees; i++)
+	Referee temp = referees.front();
+	for (Referee r : referees)
 	{
-		if (referees[i].getGamesPlayed() > temp.getGamesPlayed())
-			temp = referees[i];
+		if (!(r.getGamesPlayed() >= temp.getGamesPlayed()))
+			temp = r;
 	}
+
 	std::cout << temp.getName() << " With " << temp.getGamesPlayed() << " Games";
 
 }
@@ -179,9 +146,9 @@ void League::showMostActiveReferee() const
 void League::show() const
 {
 	std::cout << std::endl << "Welcome to " << name << " League!" << std::endl;
-	std::cout << "Currently registered " << numberOfTeams << " teams" << std::endl;
+	std::cout << "Currently registered " << teams.size() << " teams" << std::endl;
 
-	for (int i = 0; i < numberOfTeams; i++)
+	for (int i = 0; i < teams.size(); i++)
 	{
 		teams[i].show();
 	}
@@ -197,7 +164,7 @@ void League::show() const
 	std::cout << "Games";
 	std::cout.width(8);
 	std::cout << "Rating" << std::endl;
-	for (int i = 0; i < numberOfReferees; i++)
+	for (int i = 0; i < referees.size(); i++)
 	{
 		referees[i].show();
 	}
