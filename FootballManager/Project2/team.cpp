@@ -45,41 +45,45 @@ void Team::show() const
 	std::cout.width(10);
 	std::cout << "Team\n" << std::endl;
 
-	for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
-		if (this->lineup[i] != nullptr)
-		{
-			this->lineup[i]->show();
-			std::cout << std::endl;
-		}
+	std::vector<Player>::const_iterator lineup_itr = lineup.begin();
+	std::vector<Player>::const_iterator lineup_itrEnd = lineup.end();
+
+	for (; lineup_itr != lineup_itrEnd; ++lineup_itr)
+	{
+		lineup_itr->show();
+		std::cout << std::endl;
+	}
 
 	std::cout << "\nBench players: " << std::endl;
-	for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
-		if (benchPlayers[i] != nullptr)
-		{
-			benchPlayers[i]->show();
+	std::vector<Player>::const_iterator bench_itr = benchPlayers.begin();
+	std::vector<Player>::const_iterator bench_itrEnd = benchPlayers.end();
+
+	for ( ; bench_itr != bench_itrEnd; ++bench_itr)
+	{
+			bench_itr->show();
 			std::cout << std::endl;
-		}
+	}
 }
 
-Player** Team::getLineup() const
+std::vector<Player> Team::getLineup() const
 {
-	return (Player**)lineup;
+	return lineup;
 }
 
 int Team::getLineupSize()
 {
-	return LINEUP_MAX_SIZE;
+	return lineup.size();
 }
 
-int Team::getPoints()
+int Team::getPoints() const	
 {
 	return points;
 }
 
-Team::Team(const std::string name, Manager* manager, Coach* coaches,
-	Player** lineup, Player** benchPlayers, int lineup_Size, int bench_Size, int points)
-	: name(name), manager(manager), coaches(coaches),
-	players_In_Lineup(lineup_Size), players_On_Bench(bench_Size), points(points)
+Team::Team(const std::string name,
+	std::vector<Player> lineup, std::vector<Player> benchPlayers,
+	Manager* manager, Coach* coaches, int points)
+	: name(name), manager(manager), coaches(coaches), lineup(lineup), benchPlayers(benchPlayers), points(points)
 {
 	//strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
 	//Team::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow.
@@ -88,20 +92,6 @@ Team::Team(const std::string name, Manager* manager, Coach* coaches,
 		coaches->setTeam(this);
 	if (manager != nullptr)
 		manager->setTeam(this);
-
-	if (lineup == nullptr) // If a lineup wasn't given, make all slots nullptr.
-		for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
-			Team::lineup[i] = nullptr;
-	else // if lineup given, copy all the slots.
-		for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
-			Team::lineup[i] = lineup[i];
-
-	if (benchPlayers == nullptr)  // If a benchPlayer array wasn't given, allocate one LINEUP_SIZE times 3.
-		for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
-			Team::benchPlayers[i] = nullptr;
-	else // if bench given, copy all the slots.
-		for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
-			Team::benchPlayers[i] = benchPlayers[i];
 }
 
 Team::Team()
@@ -143,30 +133,17 @@ void Team::addPlayer(Player* player)
 	if (player != nullptr) // Player actually exists
 		if (player->getTeam() != this)
 		{
-			if (players_In_Lineup < LINEUP_MAX_SIZE) // Lineup isn't full.
+			if (lineup.size() < LINEUP_MAX_SIZE) // Lineup isn't full.
 			{
-				for (int i = 0; i < LINEUP_MAX_SIZE; ++i)
-					if (lineup[i] == nullptr)
-					{
-						lineup[i] = player;
-						lineup[i]->setTeam(this);
-						++players_In_Lineup;
-						break;
-					}
+				lineup.push_back(*player);
+				player->setTeam(this);
 			}
-			else if (players_On_Bench < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI) // Bench isn't full
+			else if (benchPlayers.size() < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI) // Bench isn't full
 			{
-				for (int i = 0; i < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI; ++i)
-					if (benchPlayers[i] == nullptr)
-					{
-						benchPlayers[i] = player;
-						benchPlayers[i]->setTeam(this);
-						++players_On_Bench;
-						break;
-					}
+				benchPlayers.push_back(*player);
+				player->setTeam(this);
 			}
 		}
-
 }
 
 const Team& Team::operator+=(int points)
@@ -197,7 +174,7 @@ bool Team::operator>=(const Team& otherTeam) const
 
 bool Team::isReady() const // Check if lineup is full.
 {
-	if (players_In_Lineup == LINEUP_MAX_SIZE)
+	if (lineup.size() == LINEUP_MAX_SIZE)
 		return true;
 	return false;
 }
