@@ -4,7 +4,7 @@
 #include <string.h>
 const int NAME_SIZE = 30;
 class Person
-{
+{ 
 protected:
 	char name[NAME_SIZE];
 	int age;

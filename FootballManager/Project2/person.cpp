@@ -38,7 +38,7 @@ void Person::show() const
 	std::cout.width(13);
 	std::cout << this->nationality;
 }
-
+ 
 std::ostream& operator<<(std::ostream& os, const Person& person)
 {
 	os << "Name: " << person.name << "\nAge: " << person.age
