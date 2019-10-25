@@ -45,27 +45,27 @@ void Team::show() const
 	std::cout.width(10);
 	std::cout << "Team\n" << std::endl;
 
-	std::vector<Player>::const_iterator lineup_itr = lineup.begin();
-	std::vector<Player>::const_iterator lineup_itrEnd = lineup.end();
+	std::vector<Player*>::const_iterator lineup_itr = lineup.begin();
+	std::vector<Player*>::const_iterator lineup_itrEnd = lineup.end();
 
 	for (; lineup_itr != lineup_itrEnd; ++lineup_itr)
 	{
-		lineup_itr->show();
+		(*lineup_itr)->show();
 		std::cout << std::endl;
 	}
 
 	std::cout << "\nBench players: " << std::endl;
-	std::vector<Player>::const_iterator bench_itr = benchPlayers.begin();
-	std::vector<Player>::const_iterator bench_itrEnd = benchPlayers.end();
+	std::vector<Player*>::const_iterator bench_itr = benchPlayers.begin();
+	std::vector<Player*>::const_iterator bench_itrEnd = benchPlayers.end();
 
 	for ( ; bench_itr != bench_itrEnd; ++bench_itr)
 	{
-			bench_itr->show();
+			(*bench_itr)->show();
 			std::cout << std::endl;
 	}
 }
 
-std::vector<Player> Team::getLineup() const
+std::vector<Player*> Team::getLineup() const
 {
 	return lineup;
 }
@@ -81,7 +81,7 @@ int Team::getPoints() const
 }
 
 Team::Team(const std::string name,
-	std::vector<Player> lineup, std::vector<Player> benchPlayers,
+	std::vector<Player*> lineup, std::vector<Player*> benchPlayers,
 	Manager* manager, Coach* coaches, int points)
 	: name(name), manager(manager), coaches(coaches), lineup(lineup), benchPlayers(benchPlayers), points(points)
 {

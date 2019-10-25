@@ -21,8 +21,8 @@ public:
 	Team();	//added for dynamic allocation - Asaf
 
 	Team(const std::string name,
-		std::vector<Player> lineup,
-		std::vector<Player> benchPlayers,
+		std::vector<Player*> lineup,
+		std::vector<Player*> benchPlayers,
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
 		int points=0);
@@ -36,7 +36,7 @@ public:
 	const std::string getName() const; // Added method for Player to display team name, as team name is private -Amit
 	bool isReady() const; //  Check if lineup is full and team is ready for a match
 	void show() const; // Print team's information to console.
-	std::vector<Player> getLineup() const;
+	std::vector<Player*> getLineup() const;
 	int getLineupSize();
 	int getPoints() const;	//added  for printing- Asaf
 
@@ -45,8 +45,8 @@ private:
 	std::string name;
 	Manager * manager;
 	Coach * coaches;
-	std::vector<Player> benchPlayers;
-	std::vector<Player> lineup;
+	std::vector<Player*> benchPlayers;
+	std::vector<Player*> lineup;
 					 
 	//int players_In_Lineup; // Added to have phys size of array -Amit
 	//int players_On_Bench; // Added to have phys size of array -Amit
