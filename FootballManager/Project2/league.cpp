@@ -43,10 +43,14 @@ void League::startSeason()
 	//Reset every player's current league score to 0, used to see how many goals scored in this specific league.
 	for (Team t : teams)
 	{
-		Player** curr_Lineup = t.getLineup();
-		for (int y = 0; y < LINEUP_MAX_SIZE; ++y)
+
+		//Player** curr_Lineup = t.getLineup();
+		std::vector<Player*> cur_Lineup = t.getLineup();
+		std::vector<Player*>::const_iterator cur_itr = cur_Lineup.begin();
+		std::vector<Player*>::const_iterator cur_itrEnd = cur_Lineup.end();
+		for (; cur_itr != cur_itrEnd ; ++cur_itr )
 		{
-			curr_Lineup[y]->setLeagueGoal(0);
+			(*cur_itr)->setLeagueGoal(0);
 		}
 	}
 	   
@@ -62,19 +66,18 @@ void League::startSeason()
 	//divide teams to fixtures and begin matches
 	for (int j = 0; j < numberOfFixtures; j++)
 	{
-		Match* matches;
+		std::vector<Match> matches;
 		std::vector<Team> n_list;
-		matches = new Match[teams.size() / 2];				//set of matches for fixture
 		//n_list.capacity = teams.size() / (2 * (j+1));		//set of teams for the next fixture, decreces by half for every fixture
 		int matchNum = 0, i = 0;
 		for (; i < teams.size()/(j+1); i += 2)
 		{
-			matches[matchNum] = Match(&t_list[i], &t_list[i + 1], &referees[(rand() % referees.size())]); //create match
+			matches.push_back(Match(&t_list[i], &t_list[i + 1], &referees[(rand() % referees.size())])); //create match
 			n_list.push_back(*matches[matchNum].getWinningTeam());				 //move winning team to the next fixture
 			matchNum++;
 		}
 
-		Fixture(j+1, i / 2, matches).Show();					//registed and show fixture
+		Fixture(j+1, matches).Show();					//registed and show fixture
 		if (j > 0)
 		{
 			std::vector<Team> temp = t_list;
@@ -116,15 +119,18 @@ void League::showLeadingScorer() const
 	//TODO::Implement this
 	Player* leadingPlayer = teams[0].getLineup()[0]; //  Set default.
 	int currGoal = leadingPlayer->getGoalCount();
-	for (int i = 0; i < teams.size(); ++i)
+	for (Team t : teams)
 	{
-		Player** currTeam = teams[i].getLineup();
-		for (int j = 0; j < LINEUP_MAX_SIZE; ++j)
-			if (currGoal < currTeam[j]->getGoalCount())
+		std::vector<Player*> currTeam = t.getLineup();
+		for (Player* p : currTeam)
+		{
+			if (currGoal < p->getGoalCount())
 			{
-				leadingPlayer = currTeam[j];
+				leadingPlayer = p;
 				currGoal = leadingPlayer->getGoalCount();
 			}
+		}
+
 	}
 
 	std::cout << leadingPlayer->getName() << " of Team " << leadingPlayer->getTeam()->getName() << " With " << leadingPlayer->getGoalCount() << " Goals this league.";
