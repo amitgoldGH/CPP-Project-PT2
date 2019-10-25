@@ -5,7 +5,7 @@
 
 const int NAME_SIZE = 30;
 class Person
-{
+{ 
 protected:
 	std::string name;
 	int age;

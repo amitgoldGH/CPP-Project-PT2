@@ -11,7 +11,7 @@ Person::Person(const std::string  name, int age, const std::string  nationality)
 }
 
 Person::Person(const Person& other) : name(other.name), age(other.age) , nationality(other.nationality){
-
+	 
 }
 
 Person::Person()
