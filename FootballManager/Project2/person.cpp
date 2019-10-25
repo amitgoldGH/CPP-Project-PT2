@@ -1,17 +1,18 @@
 #include "person.h"
 
 
-Person::Person(const std::string  name, int age, const std::string  nationality) : name(name),age(age), nationality(nationality)
+Person::Person(const char*  name, int age, const char*  nationality) : age(age)
 {
-	//strncpy_s(Person::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
-	//Person::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
+	strncpy_s(Person::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
+	Person::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
 
-	//strncpy_s(Person::nationality, nationality, NAME_SIZE); // Copy NAME_SIZE chars from input into nationality field.
-	//Person::nationality[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
+	strncpy_s(Person::nationality, nationality, NAME_SIZE); // Copy NAME_SIZE chars from input into nationality field.
+	Person::nationality[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
 }
 
-Person::Person(const Person& other) : name(other.name), age(other.age) , nationality(other.nationality){
-	 
+Person::Person(const Person& other) : age(other.age) {
+	strcpy_s(Person::name, other.name);
+	strcpy_s(Person::nationality, other.nationality);
 }
 
 Person::Person()
@@ -21,7 +22,7 @@ Person::Person()
 
 Person::~Person()
 {
-	
+
 	//delete[] name;
 	//delete[] nationality;
 	//Because the name and nationality are not dynamically allocated.
@@ -31,7 +32,7 @@ void Person::show() const
 {
 	std::cout.setf(std::ios::left);
 	std::cout.width(10);
-	std::cout << name;
+	std::cout << this->name;
 	std::cout.width(5);
 	std::cout << this->age;
 	std::cout.width(13);
