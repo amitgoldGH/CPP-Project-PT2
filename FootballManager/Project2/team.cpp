@@ -80,9 +80,10 @@ int Team::getPoints() const
 	return points;
 }
 
-Team::Team(const std::string name,
+Team::Team(std::string name,
+	Manager* manager, Coach* coaches, 
 	std::vector<Player*> lineup, std::vector<Player*> benchPlayers,
-	Manager* manager, Coach* coaches, int points)
+	int points)
 	: name(name), manager(manager), coaches(coaches), lineup(lineup), benchPlayers(benchPlayers), points(points)
 {
 	//strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
@@ -135,12 +136,12 @@ void Team::addPlayer(Player* player)
 		{
 			if (lineup.size() < LINEUP_MAX_SIZE) // Lineup isn't full.
 			{
-				lineup.push_back(*player);
+				lineup.push_back(player);
 				player->setTeam(this);
 			}
 			else if (benchPlayers.size() < LINEUP_MAX_SIZE * BENCH_SIZE_MULTI) // Bench isn't full
 			{
-				benchPlayers.push_back(*player);
+				benchPlayers.push_back(player);
 				player->setTeam(this);
 			}
 		}

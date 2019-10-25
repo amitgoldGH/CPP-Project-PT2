@@ -20,11 +20,12 @@ class Team
 public:
 	Team();	//added for dynamic allocation - Asaf
 
-	Team(const std::string name,
-		std::vector<Player*> lineup,
-		std::vector<Player*> benchPlayers,
+	Team(std::string name,
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
+		std::vector<Player*> lineup = std::vector<Player*>(),
+		std::vector<Player*> benchPlayers = std::vector<Player*>(),
+
 		int points=0);
 	~Team();
 
