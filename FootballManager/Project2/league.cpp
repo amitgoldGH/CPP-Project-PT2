@@ -118,22 +118,16 @@ void League::showLeadingScorer() const
 {
 	//TODO::Implement this
 	Player* leadingPlayer = teams[0].getLineup()[0]; //  Set default.
-	int currGoal = leadingPlayer->getGoalCount();
 	for (Team t : teams)
 	{
 		std::vector<Player*> currTeam = t.getLineup();
 		for (Player* p : currTeam)
-		{
-			if (currGoal < p->getGoalCount())
-			{
+			if ((*p) >= (*leadingPlayer))
 				leadingPlayer = p;
-				currGoal = leadingPlayer->getGoalCount();
-			}
-		}
 
 	}
 
-	std::cout << leadingPlayer->getName() << " of Team " << leadingPlayer->getTeam()->getName() << " With " << leadingPlayer->getGoalCount() << " Goals this league.";
+	std::cout << leadingPlayer->getName() << " of Team " << leadingPlayer->getTeam()->getName() << " With " << leadingPlayer->getLeagueGoal() << " Goals this league.";
 }
 
 void League::showMostActiveReferee() const
@@ -154,10 +148,8 @@ void League::show() const
 	std::cout << std::endl << "Welcome to " << name << " League!" << std::endl;
 	std::cout << "Currently registered " << teams.size() << " teams" << std::endl;
 
-	for (int i = 0; i < teams.size(); i++)
-	{
-		teams[i].show();
-	}
+	for (Team t : teams)
+		t.show();
 	std::cout << std::endl << "Referee list: " << std::endl;
 	std::cout.setf(std::ios::left);
 	std::cout.width(10);

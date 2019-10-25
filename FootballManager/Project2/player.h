@@ -28,6 +28,7 @@ public:
 	std::string  getName();
 	~Player();
 	void setLeagueGoal(int num);
+	int getLeagueGoal();
 	friend std::ostream& operator<<(std::ostream& os, const Player& player);
 
 

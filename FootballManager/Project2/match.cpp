@@ -54,7 +54,7 @@ void Match::playMatch()
 				}
 
 				//std::cout << currLineup[scoreIndex]->getName() << " of " << currLineup[scoreIndex]->getTeam()->getName() << " Has scored a goal." << std::endl;
-				++(currLineup[scoreIndex]);
+				++(*(currLineup[scoreIndex]));
 				--totalScore;
 			}
 		}

@@ -25,7 +25,7 @@ void main()
 	Player d4("d4", 21, "Israeli", 2, 3, 5, 0, 20000, Player::goalkeeper);
 	Player d5("d5", 25, "Russian", 6, 1, 2, 0, 15000, Player::striker);
 	
-	Player e1("e1", 15, "eanadian", 2, 1, 1, 0, 50000, Player::striker);
+	Player e1("e1", 15, "Canadian", 2, 1, 1, 0, 50000, Player::striker);
 	Player e2("e2", 18, "Ameriean", 1, 1, 2, 0, 60000, Player::defender);
 	Player e3("e3", 11, "Argentinian", 3, 2, 2, 0, 45000, Player::midlefielder);
 	Player e4("e4", 21, "Israeli", 2, 3, 5, 0, 20000, Player::goalkeeper);
@@ -96,11 +96,12 @@ void main()
 	l.addTeam(&t2);
 	l.addTeam(&t3);
 	l.addTeam(&t4);
-	
+	/*
 	l.addTeam(&t1);	//dup for testing
 	l.addTeam(&t2);	//dup for testing
 	l.addTeam(&t3);	//dup for testing
 	l.addTeam(&t4);	//dup for testing
+	*/
 	l.addReferee(&ref1);
 	l.addReferee(&ref2);
 	l.addReferee(&ref3);
@@ -109,10 +110,13 @@ void main()
 	std::cout << "***********************************\n\tStarting\n***********************************" << std::endl;
  	l.startSeason();
 	std::cout << "***********************************\n\tEnding\n***********************************" << std::endl;
+	
 	std::cout << "\nWinning team is: "; l.showLeadingTeam();
 	std::cout << "\nLeading player is: "; l.showLeadingScorer();
 	std::cout << "\nMost active referee is: "; l.showMostActiveReferee();
 	std::cout << "\nLosing team is: "; l.showLoosingTeam();
-	//l.show();	//print to show league results
+	
+	
+	l.show();	//print to show league results
 	cout << endl;
 }

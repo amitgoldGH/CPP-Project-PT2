@@ -74,9 +74,14 @@ int Player::getGoalCount()
 {
 	return goalScored;
 }
+
+int Player::getLeagueGoal()
+{
+	return goalScored_In_Curr_League;
+}
 bool Player::operator>=(const Player& player) const
 {
-	return goalScored >= player.goalScored;
+	return goalScored_In_Curr_League >= player.goalScored_In_Curr_League;
 }
 
 const Team* Player::getTeam()
