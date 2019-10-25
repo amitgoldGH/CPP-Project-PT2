@@ -2,7 +2,7 @@
 #define __MATCH_H
 #include "team.h"
 #include "referee.h"
-
+#include <vector>
 #define MAX_GOALS_IN_MATCH 7
 
 class Match
