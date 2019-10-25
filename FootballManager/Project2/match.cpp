@@ -36,7 +36,7 @@ void Match::playMatch()
 		if (homeTeam->isReady() && awayTeam->isReady())
 		{
 			int r=0, scoreIndex=0;
-			std::vector<Player> currLineup;
+			std::vector<Player*> currLineup;
 			int totalScore = (rand() % MAX_GOALS_IN_MATCH); // total goals in this match
 			while (totalScore > 0)
 			{
