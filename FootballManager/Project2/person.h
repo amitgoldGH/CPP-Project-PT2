@@ -1,19 +1,20 @@
 #ifndef __PERSON_H
 #define __PERSON_H
 #include <iostream>
-#include <string.h>
+#include <string>
+
 const int NAME_SIZE = 30;
 class Person
 {
 protected:
-	char name[NAME_SIZE];
+	std::string name;
 	int age;
-	char nationality[NAME_SIZE];
+	std::string nationality;
 	Person(const Person& other);
 	Person(); //added for dynamic allocation - Asaf
 	virtual ~Person();	//added virtual d'tor (polymorphism) - asaf
 public:
-	Person(const char*  name, int age, const char*  nationality);
+	Person(const std::string  name, int age, const std::string nationality);
 	virtual void show() const = 0; // Set as virtual, so inheritors can override -Amit == changed to abstract - asaf
 	friend std::ostream& operator<<(std::ostream& os, const Person& person);
 };
