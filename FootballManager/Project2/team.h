@@ -19,7 +19,7 @@ class Team
 public:
 	Team();	//added for dynamic allocation - Asaf
 
-	Team(const char name[NAME_SIZE],
+	Team(const std::string name,
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
 		Player** lineup = nullptr,
@@ -34,7 +34,7 @@ public:
 	void addPlayer(Player* player);
 	const Team& operator+=(int points); // Changed from operator+ confirmed with Riki it was a mistake.
 	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more pointprivate:
-	const char*  getName() const; // Added method for Player to display team name, as team name is private -Amit
+	const std::string getName() const; // Added method for Player to display team name, as team name is private -Amit
 	bool isReady() const; //  Check if lineup is full and team is ready for a match
 	void show() const; // Print team's information to console.
 	Player** getLineup() const;
@@ -43,7 +43,7 @@ public:
 
 private:
 
-	char name[NAME_SIZE];
+	std::string name;
 	Manager * manager;
 	Coach * coaches;
 	Player* benchPlayers[LINEUP_MAX_SIZE * BENCH_SIZE_MULTI]; // Changed to pointer array

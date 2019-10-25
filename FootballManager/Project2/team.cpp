@@ -1,5 +1,5 @@
 #include "team.h"
-const char*  Team::getName() const
+const std::string  Team::getName() const
 {
 	return name;
 }
@@ -76,9 +76,9 @@ int Team::getPoints()
 	return points;
 }
 
-Team::Team(const char name[NAME_SIZE], Manager* manager, Coach* coaches,
+Team::Team(const std::string name, Manager* manager, Coach* coaches,
 	Player** lineup, Player** benchPlayers, int lineup_Size, int bench_Size, int points)
-	: manager(manager), coaches(coaches),
+	: name(name), manager(manager), coaches(coaches),
 	players_In_Lineup(lineup_Size), players_On_Bench(bench_Size), points(points)
 {
 	strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.

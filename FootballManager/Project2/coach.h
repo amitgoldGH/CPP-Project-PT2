@@ -9,7 +9,7 @@ class Coach : virtual public Person
 {
 public:
 	
-	Coach(const char*  name,	int age, const char*  nationality, Team* currentTeam = nullptr);
+	Coach(const std::string name, int age, const std::string nationality, Team* currentTeam = nullptr);
 	// Team::Role type = Team::striker , Irrelevant for coach -Amit.
 	~Coach();
 	void show() const;
