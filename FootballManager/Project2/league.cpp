@@ -1,12 +1,12 @@
 #pragma warning (disable:4996)
 #include "league.h"
-League::League(const char* lname, int numberOfTeams, Team * teams, int numberofreferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
-/*	: numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees), referees(referees),
+League::League(std::string lname, int numberOfTeams, Team * teams, int numberofreferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
+	: name(lname) /*numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees), referees(referees),
 	numberOfFixtures(numberOfFixtures), playedFixtures(0), fixtures(fixtures)
 	*/
 {
 	//name = new char[strlen(lname) + 1];
-	strcpy(this->name, lname);
+	//strcpy(this->name, lname);
 }
 
 League::~League()
