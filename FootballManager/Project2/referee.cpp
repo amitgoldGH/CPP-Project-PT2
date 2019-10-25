@@ -5,7 +5,7 @@ Referee::Referee()
 {
 }
 
-Referee::Referee(const std::string name, int age, const char*  nationality, int rating)
+Referee::Referee(std::string name, int age, std::string  nationality, int rating)
 	: Person(name,age,nationality), rating(rating), gamesPlayed(0)
 {
 

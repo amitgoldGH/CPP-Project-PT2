@@ -1,6 +1,6 @@
 #include "coach.h"
 
-Coach::Coach(const char*  name, int age, const char*  nationality, Team* currentTeam)
+Coach::Coach(const std::string  name, int age, const std::string  nationality, Team* currentTeam)
 	: Person(name, age, nationality), currentTeam(currentTeam)
 {
 

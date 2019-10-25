@@ -81,8 +81,8 @@ Team::Team(const std::string name, Manager* manager, Coach* coaches,
 	: name(name), manager(manager), coaches(coaches),
 	players_In_Lineup(lineup_Size), players_On_Bench(bench_Size), points(points)
 {
-	strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
-	Team::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow.
+	//strncpy_s(Team::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
+	//Team::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow.
 
 	if (coaches != nullptr)
 		coaches->setTeam(this);

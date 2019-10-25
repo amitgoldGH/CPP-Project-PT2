@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player(const char*  name, int age, const char*  nationality,
+Player::Player(std::string  name, int age, std::string  nationality,
 	int attack, int defence, int goalkeeping, int goalScored, int value,
 	Role role, Team* currentTeam)
 	: Person(name, age, nationality), attack(attack), defence(defence),
@@ -84,7 +84,7 @@ const Team* Player::getTeam()
 	return this->currentTeam;
 }
 
-const char*  Player::getName()
+std::string Player::getName()
 {
 	return this->name;
 }

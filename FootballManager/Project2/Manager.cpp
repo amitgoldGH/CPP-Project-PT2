@@ -1,6 +1,6 @@
 #include "manager.h"
 
-Manager::Manager(const char*  name, int age, const char*  nationality, int yearsOfExperience, Team* currTeam) 
+Manager::Manager(std::string  name, int age, std::string  nationality, int yearsOfExperience, Team* currTeam) 
 	: Person(name, age, nationality)
 	, yearsOfExperience(yearsOfExperience), currentTeam(currTeam)
 {

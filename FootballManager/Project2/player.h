@@ -3,7 +3,7 @@
 #include "person.h"
 #include "team.h"
 
-static const char*  Roles[15] = { "Striker", "Defender", "Goal-Keeper", "Middle-Fielder" };
+static std::string  Roles[15] = { "Striker", "Defender", "Goal-Keeper", "Middle-Fielder" };
 
 class Player : virtual public Person
 {
@@ -13,8 +13,8 @@ public:
 	void show() const; // Changed to virtual for inheritors to override.
 	double getRate() const; // Changed to const function -Amit
 
-	Player(const char*  name, int age,
-		const char*  nationality,
+	Player(std::string  name, int age,
+		std::string nationality,
 		int attack, int defence,
 		int goalkeeping = 0, int goalScored = 0, int value=0,
 		Role role = (Role)0, Team* currentTeam = nullptr);
@@ -25,7 +25,7 @@ public:
 	// Added prefix operator -Amit
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles #Goals*
 	const Team* getTeam(); // Added to check what team a player is in -Amit
-	const char*  getName();
+	std::string  getName();
 	~Player();
 	void setLeagueGoal(int num);
 	friend std::ostream& operator<<(std::ostream& os, const Player& player);
