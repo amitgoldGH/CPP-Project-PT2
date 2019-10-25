@@ -1,21 +1,6 @@
 #pragma warning (disable:4996)
 #include "league.h"
-League::League(std::string lname, int numberOfTeams, Team * teams, int numberOfReferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures)
-	: name(lname) /*teams.size()(teams.size()), teams(teams), referees.size()(referees.size()), referees(referees),
-	numberOfFixtures(numberOfFixtures), playedFixtures(0), fixtures(fixtures)
-	*/
-{
-	//name = new char[strlen(lname) + 1];
-	//strcpy(this->name, lname);
-}
-
-League::~League()
-{
-	//delete name;
-	//delete[] teams;
-	//delete[] referees;
-	//delete[] fixtures;
-}
+League::League(std::string lname, int numberOfTeams, Team * teams, int numberOfReferees, Referee * referees, int numberOfFixtures, int playedFixtures, Fixture * fixtures) : name(lname) {}
 
 void League::addTeam(Team * team)
 {
@@ -135,7 +120,7 @@ void League::showMostActiveReferee() const
 	Referee temp = referees.front();
 	for (Referee r : referees)
 	{
-		if (!(r.getGamesPlayed() >= temp.getGamesPlayed()))
+		if (r.getGamesPlayed() >= temp.getGamesPlayed())
 			temp = r;
 	}
 

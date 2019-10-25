@@ -13,7 +13,6 @@ class League
 
 private:
 	Team leadingTeam;
-
 	std::string name;
 	int numberOfTeams;
 	int numberOfReferees;
@@ -29,12 +28,10 @@ public:
 		Referee * referees = nullptr, int numberOfFixtures = 0,
 		int playedFixtures = 0, Fixture * fixtures = nullptr);
 
-	~League();
 	void addTeam(Team* team);
 	void setNumberOfReferees(int numberOfreferees);
 	void addReferee(Referee* referee);
 	void startSeason();
-	//const Fixture& playFixture(); - commented, not used right now - Asaf
 	void showLeadingTeam() const;
 	void showLoosingTeam() const;
 	void showLeadingScorer() const;

@@ -18,17 +18,14 @@ class Team
 {
 
 public:
-	Team();	//added for dynamic allocation - Asaf
-
 	Team(std::string name,
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
 		std::vector<Player*> lineup = std::vector<Player*>(),
 		std::vector<Player*> benchPlayers = std::vector<Player*>(),
-
 		int points=0);
-	~Team();
 
+	Team();
 	void setManager(Manager* manger);
 	void addCoach(Coach* coach);
 	void addPlayer(Player* player);
@@ -48,9 +45,6 @@ private:
 	Coach * coaches;
 	std::vector<Player*> benchPlayers;
 	std::vector<Player*> lineup;
-					 
-	//int players_In_Lineup; // Added to have phys size of array -Amit
-	//int players_On_Bench; // Added to have phys size of array -Amit
 	int points;
 };
 

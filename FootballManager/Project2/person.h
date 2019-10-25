@@ -10,9 +10,6 @@ protected:
 	std::string name;
 	int age;
 	std::string nationality;
-	Person(const Person& other);
-	Person(); //added for dynamic allocation - Asaf
-	virtual ~Person();	//added virtual d'tor (polymorphism) - asaf
 public:
 	Person(const std::string  name, int age, const std::string nationality);
 	virtual void show() const = 0; // Set as virtual, so inheritors can override -Amit == changed to abstract - asaf

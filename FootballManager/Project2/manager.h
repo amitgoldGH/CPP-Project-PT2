@@ -11,12 +11,10 @@ class Manager : public Person
 private:
 	int yearsOfExperience;
 	Team * currentTeam;
-	Manager(const Manager& other) = default;
 
 public:
-	Manager(const std::string name, int age, const std::string  nationality,int yearsOfExperience, Team* currTeam = nullptr);
+	Manager(const std::string name, int age, const std::string  nationality, int yearsOfExperience, Team* currTeam = nullptr);
 	void setTeam(Team * team);
-	~Manager();
 	void show() const;
 };
 #endif //__MANAGER_H

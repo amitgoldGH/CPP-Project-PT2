@@ -7,13 +7,14 @@ Player::Player(std::string  name, int age, std::string  nationality,
 	goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(currentTeam), goalScored_In_Curr_League(0) {}
 
-Player::Player(const Player& other)
+/*
+Play0er::Player(const Player& other)
 	: Person(other.name, other.age, other.nationality),
 	attack(other.attack), defence(other.defence),
 	goalkeeping(other.goalkeeping), goalScored(other.goalScored), value(other.value),
 	role(other.role), currentTeam(other.currentTeam), goalScored_In_Curr_League(other.goalScored_In_Curr_League) {}
-
-Player::~Player() {}
+*/
+//Player::~Player() {}
 
 void Player::show() const
 {

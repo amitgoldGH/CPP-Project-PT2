@@ -105,18 +105,18 @@ void main()
 	l.addReferee(&ref1);
 	l.addReferee(&ref2);
 	l.addReferee(&ref3);
-	l.show();
+	//l.show();
 
 	std::cout << "***********************************\n\tStarting\n***********************************" << std::endl;
  	l.startSeason();
 	std::cout << "***********************************\n\tEnding\n***********************************" << std::endl;
 	
+	//l.show();	//print to show league results
+
+
 	std::cout << "\nWinning team is: "; l.showLeadingTeam();
 	std::cout << "\nLeading player is: "; l.showLeadingScorer();
 	std::cout << "\nMost active referee is: "; l.showMostActiveReferee();
 	std::cout << "\nLosing team is: "; l.showLoosingTeam();
-	
-	
-	l.show();	//print to show league results
 	cout << endl;
 }

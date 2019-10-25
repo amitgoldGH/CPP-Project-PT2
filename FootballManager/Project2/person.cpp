@@ -11,22 +11,12 @@ Person::Person(const std::string  name, int age, const std::string  nationality)
 	//Person::nationality[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
 }
 
-Person::Person(const Person& other) : name(other.name), age(other.age), nationality(other.nationality) {
+//Person::Person(const Person& other) : name(other.name), age(other.age), nationality(other.nationality) {}
 
-}
-
-Person::Person()
-{
-}
+//Person::Person(){}
 
 
-Person::~Person()
-{
-
-	//delete[] name;
-	//delete[] nationality;
-	//Because the name and nationality are not dynamically allocated.
-}
+//Person::~Person(){}
 
 void Person::show() const
 {

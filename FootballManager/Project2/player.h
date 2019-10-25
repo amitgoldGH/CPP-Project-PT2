@@ -26,7 +26,6 @@ public:
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles #Goals*
 	const Team* getTeam(); // Added to check what team a player is in -Amit
 	std::string  getName();
-	~Player();
 	void setLeagueGoal(int num);
 	int getLeagueGoal();
 	friend std::ostream& operator<<(std::ostream& os, const Player& player);
@@ -41,9 +40,6 @@ protected:
 	int value;
 	Role role;
 	Team * currentTeam;
-
-	Player(const Player& other);
-
 };
 
 #endif //__PLAYER_H

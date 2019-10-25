@@ -95,19 +95,7 @@ Team::Team(std::string name,
 		manager->setTeam(this);
 }
 
-Team::Team()
-{
-}
-
-Team::~Team()
-{
-	// delete[] name; not dynamically assigned -Amit
-	// delete[] benchPlayers; not dynamically assigned -Amit
-	// delete[] lineup; not dynamically assigned -Amit
-
-
-
-}
+Team::Team(){}
 
 void Team::setManager(Manager* manager)
 {

@@ -20,10 +20,8 @@ void Manager::setTeam(Team * team)
 	}
 }
 
-Manager::~Manager()
-{
 
-}
+//Manager::~Manager(){}
 
 void Manager::show() const
 {

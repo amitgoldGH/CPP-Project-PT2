@@ -32,7 +32,7 @@ void Coach::setTeam(Team* team)
 		}
 	}
 }
-
+/*
 Coach::Coach(const Coach& other) : Person(other)
 {
 	currentTeam = other.currentTeam;
@@ -42,3 +42,4 @@ Coach::~Coach()
 {
 
 }
+*/

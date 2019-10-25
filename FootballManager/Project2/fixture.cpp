@@ -1,14 +1,11 @@
 #include "fixture.h"
 
-Fixture::Fixture(int number, std::vector<Match> matches) : number(number), matches(matches)
-{
-
-}
+Fixture::Fixture(int number, std::vector<Match>& matches) : number(number), matches(matches){}
 
 
-Fixture::~Fixture(){}
+//Fixture::~Fixture(){}
 
-Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
+//Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
 
 void Fixture::addMatch(Match * m)
 {

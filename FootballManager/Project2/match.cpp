@@ -1,12 +1,5 @@
 #include "match.h"
 
-Match::Match()
-{
-	//srand(time(0));	//moved for testing
-	resultHome = 0;
-	resultAway = 0;
-
-}
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 	: homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
@@ -14,7 +7,7 @@ Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee)
 	//srand(time(0));	//moved for testing
 	resultHome = 0;
 	resultAway = 0;
-	++(*referee);
+ 	++(*referee);
 
 	this->playMatch();
 	if (resultHome > resultAway) // Home wins
@@ -36,7 +29,7 @@ void Match::playMatch()
 		if (homeTeam->isReady() && awayTeam->isReady())
 		{
 			int r=0, scoreIndex=0;
-			std::vector<Player*> currLineup;
+			std::vector<Player*> currLineup = std::vector<Player*>();
 			int totalScore = (rand() % MAX_GOALS_IN_MATCH); // total goals in this match
 			while (totalScore > 0)
 			{
@@ -72,10 +65,7 @@ Team * Match::getWinningTeam()
 	}
 }
 
-Match::~Match()
-{
-
-}
+//Match::~Match(){}
 
 void Match::show() const
 {
