@@ -3,6 +3,7 @@
 #include "team.h"
 #include "referee.h"
 #include "fixture.h"
+#include <vector>
 
 class Team;
 class Referee;
@@ -11,16 +12,16 @@ class League
 {
 
 private:
-	Team* leadingTeam;
+	Team leadingTeam;
 
 	std::string name;
 	int numberOfTeams;
 	int numberOfReferees;
-	Team* teams;
-	Referee * referees;
+	std::vector<Team> teams;
+	std::vector<Referee> referees;
 	int numberOfFixtures;
 	int playedFixtures;
-	Fixture* fixtures;
+	std::vector<Fixture> fixtures;
 	bool onGoing = false; //added for isEnded() - Asaf
 public:
 	League(std::string lname, int numberOfTeams = 0, //added default 0
@@ -29,9 +30,9 @@ public:
 		int playedFixtures = 0, Fixture * fixtures = nullptr);
 
 	~League();
-	void addTeam(Team * team);
+	void addTeam(Team* team);
 	void setNumberOfReferees(int numberOfreferees);
-	void addReferee(Referee * referee);
+	void addReferee(Referee* referee);
 	void startSeason();
 	//const Fixture& playFixture(); - commented, not used right now - Asaf
 	void showLeadingTeam() const;
