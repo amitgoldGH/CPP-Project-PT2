@@ -1,18 +1,18 @@
 #ifndef __FIXTURE_H
 #define __FIXTURE_H
 #include "match.h"
+#include <vector>
 
 class Fixture
 {
 
 private:
 	int number;
-	Match * matches;
-	int numberOfMatches = 0; //added for show method
+	std::vector<Match> matches;
 	
 
 public:
-	Fixture(int number, int numberOfMatches, Match * matches = nullptr); //added , int numberOfMatches - Asaf
+	Fixture(int number, std::vector<Match> matches); 
 
 	~Fixture();
 	Fixture(const Fixture& other);
