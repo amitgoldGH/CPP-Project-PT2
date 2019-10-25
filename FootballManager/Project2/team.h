@@ -5,6 +5,7 @@
 #include "manager.h"
 #include <ctime>    // For time()
 #include <cstdlib>  // For srand() and rand()
+#include <vector>
 
 #define LINEUP_MAX_SIZE 5 // size of the team lineup 
 #define BENCH_SIZE_MULTI 3 // Multiplier for bench size.
@@ -20,12 +21,10 @@ public:
 	Team();	//added for dynamic allocation - Asaf
 
 	Team(const std::string name,
+		std::vector<Player> lineup,
+		std::vector<Player> benchPlayers,
 		Manager* manager = nullptr,
 		Coach* coaches = nullptr,
-		Player** lineup = nullptr,
-		Player** benchPlayers = nullptr, 
-		int lineup_Size = 0, 
-		int bench_Size = 0,
 		int points=0);
 	~Team();
 
@@ -37,20 +36,20 @@ public:
 	const std::string getName() const; // Added method for Player to display team name, as team name is private -Amit
 	bool isReady() const; //  Check if lineup is full and team is ready for a match
 	void show() const; // Print team's information to console.
-	Player** getLineup() const;
+	std::vector<Player> getLineup() const;
 	int getLineupSize();
-	int getPoints();	//added  for printing- Asaf
+	int getPoints() const;	//added  for printing- Asaf
 
 private:
 
 	std::string name;
 	Manager * manager;
 	Coach * coaches;
-	Player* benchPlayers[LINEUP_MAX_SIZE * BENCH_SIZE_MULTI]; // Changed to pointer array
-	Player* lineup[LINEUP_MAX_SIZE]; // Changed to pointer array
+	std::vector<Player> benchPlayers;
+	std::vector<Player> lineup;
 					 
-	int players_In_Lineup; // Added to have phys size of array -Amit
-	int players_On_Bench; // Added to have phys size of array -Amit
+	//int players_In_Lineup; // Added to have phys size of array -Amit
+	//int players_On_Bench; // Added to have phys size of array -Amit
 	int points;
 };
 
