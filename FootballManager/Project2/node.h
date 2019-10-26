@@ -8,6 +8,8 @@ public:
 	Node* next();
 	T get_Obj();
 	void set_Next(Node* next);
+	void print();
+	void deleteNode(T o);
 
 private:
 	Node* next_Node;
