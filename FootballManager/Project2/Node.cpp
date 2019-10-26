@@ -1,5 +1,11 @@
 #include "node.h"
 
+template<class T>
+void Node<T>::set_Next(Node* next)
+{
+	this->next_Node = next;
+}
+
 
 template<class T>
 Node<T>::Node(T o) : obj(o), next_Node(nullptr)

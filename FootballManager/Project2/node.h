@@ -7,6 +7,7 @@ public:
 	~Node();
 	Node* next();
 	T get_Obj();
+	void set_Next(Node* next);
 
 private:
 	Node* next_Node;
