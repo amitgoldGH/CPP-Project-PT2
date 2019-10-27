@@ -17,7 +17,6 @@ private:
 	int numberOfTeams;
 	int numberOfReferees;
 	std::vector<Team> teams;
-	std::vector<Referee> referees;
 	LinkedList<Referee> refereeList;
 	int numberOfFixtures;
 	int playedFixtures;
