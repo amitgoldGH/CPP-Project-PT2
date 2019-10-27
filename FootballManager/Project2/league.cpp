@@ -12,9 +12,11 @@ void League::setNumberOfReferees(int numberOfReferees)
 {
 }
 
-void League::addReferee(Referee* referee)
+void League::addReferee(Referee& referee)
 {
-	referees.push_back(*referee);
+	//referees.push_back(*referee);
+	refereeList.add(referee);
+	++numberOfReferees;
 }
 
 
@@ -55,9 +57,17 @@ void League::startSeason()
 		std::vector<Team> n_list;
 		//n_list.capacity = teams.size() / (2 * (j+1));		//set of teams for the next fixture, decreces by half for every fixture
 		int matchNum = 0, i = 0;
-		for (; i < teams.size()/(j+1); i += 2)
-		{
-			matches.push_back(Match(&t_list[i], &t_list[i + 1], &referees[(rand() % referees.size())])); //create match
+		for (; i < teams.size() / (j+1); i += 2)
+		{	
+			int refereeNumber = (rand() % numberOfReferees);
+			node<Referee>* node = refereeList.first;
+			while (refereeNumber > 0)
+			{
+				node = node->next;
+				--refereeNumber;
+			}
+			Referee* chosen_Ref = node->data;
+			matches.push_back(Match(&t_list[i], &t_list[i + 1], chosen_Ref)); //create match
 			n_list.push_back(*matches[matchNum].getWinningTeam());				 //move winning team to the next fixture
 			matchNum++;
 		}
@@ -117,14 +127,21 @@ void League::showLeadingScorer() const
 
 void League::showMostActiveReferee() const
 {
-	Referee temp = referees.front();
-	for (Referee r : referees)
+	node<Referee>* node = refereeList.first;
+	Referee* temp = nullptr;
+	if (node != nullptr)
 	{
-		if (r.getGamesPlayed() >= temp.getGamesPlayed())
-			temp = r;
+		temp = node->data;
+		int tempNum = numberOfReferees;
+		while (tempNum > 0)
+		{
+			if (node->next->data->getGamesPlayed() > temp->getGamesPlayed())
+				temp = node->next->data;
+			--tempNum;
+		}
 	}
-
-	std::cout << temp.getName() << " With " << temp.getGamesPlayed() << " Games";
+	if (temp != nullptr)
+		std::cout << temp->getName() << " With " << temp->getGamesPlayed() << " Games";
 
 }
 
