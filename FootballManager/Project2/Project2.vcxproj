@@ -122,6 +122,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="fixture.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="match.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
@@ -139,7 +140,6 @@
     <ClCompile Include="league.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="match.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="referee.cpp" />
