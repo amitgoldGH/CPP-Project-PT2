@@ -4,7 +4,7 @@
 #include "referee.h"
 #include "fixture.h"
 #include <vector>
-
+#include "LinkedList.h"
 class Team;
 class Referee;
 class Fixture;
@@ -18,6 +18,7 @@ private:
 	int numberOfReferees;
 	std::vector<Team> teams;
 	std::vector<Referee> referees;
+	LinkedList<Referee> refereeList;
 	int numberOfFixtures;
 	int playedFixtures;
 	std::vector<Fixture> fixtures;
@@ -30,7 +31,7 @@ public:
 
 	void addTeam(Team* team);
 	void setNumberOfReferees(int numberOfreferees);
-	void addReferee(Referee* referee);
+	void addReferee(Referee& referee);
 	void startSeason();
 	void showLeadingTeam() const;
 	void showLoosingTeam() const;
