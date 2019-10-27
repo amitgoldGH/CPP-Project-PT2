@@ -1,9 +1,10 @@
 #include "player.h"
 #include "match.h"
 #include "league.h"
+#include "LinkedList.h"
 using namespace std;
 
-void main()
+void main1()
 {
 	srand(time(0)); // Solved the issue with the same point results
 
@@ -119,4 +120,17 @@ void main()
 	std::cout << "\nMost active referee is: "; l.showMostActiveReferee();
 	std::cout << "\nLosing team is: "; l.showLoosingTeam();
 	cout << endl;
+}
+
+void main() 
+{
+	Player a1("garoshua", 15, "Canadian", 2, 1, 1, 0, 50000, Player::striker);
+	LinkedList<Player>* list = new LinkedList<Player>;
+	list->add(a1);
+	list->print();
+
+	cout << "\nAfter delete: \n";
+	list->deleteNode(a1);
+	list->print();
+	delete list;
 }
