@@ -2,11 +2,6 @@
 
 Fixture::Fixture(int number, std::vector<Match>& matches) : number(number), matches(matches){}
 
-
-//Fixture::~Fixture(){}
-
-//Fixture::Fixture(const Fixture& other) : number(other.number), matches(other.matches) {}
-
 void Fixture::addMatch(Match * m)
 {
 	matches.push_back(*m);

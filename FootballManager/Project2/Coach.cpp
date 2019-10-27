@@ -27,19 +27,6 @@ void Coach::setTeam(Team* team)
 	{
 		currentTeam = team;
 		if (currentTeam != nullptr)
-		{
 			currentTeam->addCoach(this);
-		}
 	}
 }
-/*
-Coach::Coach(const Coach& other) : Person(other)
-{
-	currentTeam = other.currentTeam;
-}
-
-Coach::~Coach()
-{
-
-}
-*/

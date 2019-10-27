@@ -80,15 +80,7 @@ void main()
 	t4.addPlayer(&d3);
 	t4.addPlayer(&d4);
 	t4.addPlayer(&d5);
-	/*
-	cout << "\nAfter adding player: " << endl;
-	cout << "Team1: \n";
-	t1.show();
-	cout << "\n---------------------------------------------------------------------\n";
-	cout << "Team2: \n";
-	t2.show();
-	cout << "\n---------------------------------------------------------------------\n";
-	*/
+	
 // --------------------------------------------------------
 
 
@@ -97,12 +89,7 @@ void main()
 	l.addTeam(&t2);
 	l.addTeam(&t3);
 	l.addTeam(&t4);
-	/*
-	l.addTeam(&t1);	//dup for testing
-	l.addTeam(&t2);	//dup for testing
-	l.addTeam(&t3);	//dup for testing
-	l.addTeam(&t4);	//dup for testing
-	*/
+
 	l.addReferee(ref1);
 	l.addReferee(ref2);
 	l.addReferee(ref3);
@@ -111,9 +98,6 @@ void main()
 	std::cout << "***********************************\n\tStarting\n***********************************" << std::endl;
  	l.startSeason();
 	std::cout << "***********************************\n\tEnding\n***********************************" << std::endl;
-	
-	//l.show();	//print to show league results
-
 
 	std::cout << "\nWinning team is: "; l.showLeadingTeam();
 	std::cout << "\nLeading player is: "; l.showLeadingScorer();

@@ -3,13 +3,6 @@
 #define __LINKEDLIST_H
 #include <iostream>
 
-/*
-template<class T>
-struct node {
-	node<T>* next;
-	T data;
-};
-*/
 template<class T>
 class node
 {
@@ -46,37 +39,23 @@ public:
 	}
 	void add(T& data)
 	{
-		if (first == nullptr)
-		{
-			// The list is empty
+		// The list is empty	
+		if (first == nullptr) 
 			first = new node<T>(nullptr, &data);
-			/*
-			first->data = data;
-			first->next = nullptr;
-			*/
-			//last = first;
-		}
+		
+		// The list isn't empty
 		else
 		{
-			// The list isn't empty
+			// The list has one element
 			if (first != nullptr && last == nullptr)
 			{
-				// The list has one element
 				last = new node<T>(nullptr, &data);
-				/*
-				last->data = data;
-				last->next = nullptr;
-				*/
 				first->next = last;
 			}
+			// The list has more than one element
 			else
 			{
-				// The list has more than one element
 				last->next = new node<T>(nullptr, &data);
-				/*
-				last->next->data = data;
-				last->next->next = nullptr;
-				*/
 				last = last->next;
 			}
 		}
