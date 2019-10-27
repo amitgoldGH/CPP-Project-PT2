@@ -4,7 +4,7 @@
 #include "LinkedList.h"
 using namespace std;
 
-void main1()
+void main()
 {
 	srand(time(0)); // Solved the issue with the same point results
 
@@ -103,10 +103,10 @@ void main1()
 	l.addTeam(&t3);	//dup for testing
 	l.addTeam(&t4);	//dup for testing
 	*/
-	l.addReferee(&ref1);
-	l.addReferee(&ref2);
-	l.addReferee(&ref3);
-	//l.show();
+	l.addReferee(ref1);
+	l.addReferee(ref2);
+	l.addReferee(ref3);
+	l.show();
 
 	std::cout << "***********************************\n\tStarting\n***********************************" << std::endl;
  	l.startSeason();
@@ -122,7 +122,7 @@ void main1()
 	cout << endl;
 }
 
-void main() 
+void main1() 
 {
 	Player a1("garoshua", 15, "Canadian", 2, 1, 1, 0, 50000, Player::striker);
 	LinkedList<Player>* list = new LinkedList<Player>;
