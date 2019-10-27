@@ -2,21 +2,7 @@
 #include "person.h"
 
 
-Person::Person(const std::string  name, int age, const std::string  nationality) : name(name), age(age), nationality(nationality)
-{
-	//strncpy_s(Person::name, name, NAME_SIZE); // Copy NAME_SIZE chars from input into name field.
-	//Person::name[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
-
-	//strncpy_s(Person::nationality, nationality, NAME_SIZE); // Copy NAME_SIZE chars from input into nationality field.
-	//Person::nationality[NAME_SIZE - 1] = '\0'; // In case input was larger than NAME_SIZE adding a null terminator to prevent overflow. 
-}
-
-//Person::Person(const Person& other) : name(other.name), age(other.age), nationality(other.nationality) {}
-
-//Person::Person(){}
-
-
-//Person::~Person(){}
+Person::Person(const std::string  name, int age, const std::string  nationality) : name(name), age(age), nationality(nationality){}
 
 void Person::show() const
 {
