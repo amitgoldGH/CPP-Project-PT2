@@ -111,7 +111,6 @@ void League::showLoosingTeam() const
 
 void League::showLeadingScorer() const
 {
-	//TODO::Implement this
 	Player* leadingPlayer = teams[0].getLineup()[0]; //  Set default.
 	for (Team t : teams)
 	{
@@ -164,9 +163,15 @@ void League::show() const
 	std::cout << "Games";
 	std::cout.width(8);
 	std::cout << "Rating" << std::endl;
-	for (int i = 0; i < referees.size(); i++)
+	
+
+	
+	for (int i = 0, node<Referee>* temp = refereeList.first; i < numberOfReferees ;i++)
 	{
-		referees[i].show();
+		if (temp == nullptr)
+			break;
+		temp->data->show();
+		temp = temp->next;
 	}
 
 
